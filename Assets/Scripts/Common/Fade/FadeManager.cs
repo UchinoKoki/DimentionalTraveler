@@ -9,14 +9,49 @@ public enum FadeType
 //フェードを管理する
 public class FadeManager : MonoBehaviour
 {
-    private FadeController fadeController; //フェードの制御クラス
+    public static FadeManager instance; //シングルトン
 
-    void Start()
-    {
+    private FadeController fadeController; //フェードの制御クラス
+    
+    private void Awake() {
+        //シングルトン
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }else{
+            Destroy(gameObject);
+        }
+
+        //フェードの制御クラスを取得
         fadeController = gameObject.GetComponent<FadeController>();
+    }
+
+
+    //フェードイン
+    public void FadeIn(Fade.FadeType fadeType)
+    {
+        //フェードの種類によって処理を分ける
+        if(fadeType == Fade.FadeType.Normal)
+        {
+            FadeInNormal();
+        }
+    }
+    //フェードアウト
+    public void FadeOut(Fade.FadeType fadeType)
+    {
+        //フェードの種類によって処理を分ける
+        if(fadeType == Fade.FadeType.Normal)
+        {
+            FadeOutNormal();
+        }
     }
     public void FadeInNormal()
     {
         fadeController.FadeInNormal();
+    }
+    //ノーマルフェード(Imageの透明度を変える)
+    private void FadeOutNormal()
+    {
+        fadeController.FadeOutNormal();
     }
 }

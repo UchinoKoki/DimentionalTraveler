@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Fade;
 
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance;
-    [SerializeField] private UnityEvent onCompleteIndication;
-    
     private void Awake() {
         if(instance == null){
             instance = this;
@@ -16,9 +15,7 @@ public class TitleManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void OnCompleteIndication()
-    {
-        onCompleteIndication.Invoke();
+    private void Start() {
+        FadeManager.instance.FadeIn(Fade.FadeType.Normal);
     }
 }
