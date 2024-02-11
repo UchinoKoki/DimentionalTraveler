@@ -6,6 +6,6 @@ using UnityEngine;
 public class PlayerAbilityAsset : ScriptableObject {
     public string abilityName;
     public int useSlotResource;
-    public int useResource;
+    public int useCost;
     public float coolTime;
 }
