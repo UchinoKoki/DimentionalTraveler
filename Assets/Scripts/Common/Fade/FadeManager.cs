@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public enum FadeType
 {
@@ -10,10 +9,14 @@ public enum FadeType
 //フェードを管理する
 public class FadeManager : MonoBehaviour
 {
-    [SerializeField] private GameObject fadePanel; //フェードするパネル
+    private FadeController fadeController; //フェードの制御クラス
 
-    public void FadeIn(float time)
+    void Start()
     {
-
+        fadeController = gameObject.GetComponent<FadeController>();
+    }
+    public void FadeInNormal()
+    {
+        fadeController.FadeInNormal();
     }
 }
