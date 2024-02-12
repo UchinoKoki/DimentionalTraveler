@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: DataAsset
   m_EditorClassIdentifier: 
   abilityName: 
+  useSlotResource: 1
+  useCost: 1
+  coolTime: 1
