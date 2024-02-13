@@ -5,9 +5,9 @@ using UnityEngine;
 //プレイヤーのアビリティを管理するクラス
 public class PlayerAbility : MonoBehaviour
 {
-    private List<AbilityAsset> abilityList = new List<AbilityAsset>();
+    [SerializeField] private List<AbilityAsset> abilityList = new List<AbilityAsset>();
     [SerializeField] private int abilityCost;
-    [SerializeField] private AbilityUI abilityUI;
+    [SerializeField] private GameObject nowAbilityParent;
 
     public void AddAbility(AbilityAsset ability)
     {
@@ -21,24 +21,26 @@ public class PlayerAbility : MonoBehaviour
         abilityCost -= ability.useCost;
         //リストに追加
         abilityList.Add(ability);
-        //表示を更新
-        UIUpdate();
+        //データ保持スクリプトへデータを送る
+        foreach (var item in nowAbilityParent.GetComponentsInChildren<KeepAbilityData>())
+        {
+            if(item.Ability == null)
+            {
+                item.Ability = ability;
+                break;
+            }
+        }
     }
     public void RemoveAbility(AbilityAsset ability)
     {
+        if(ability == null)return;
         //コストを返却
         abilityCost += ability.useCost;
         //リストから削除
         abilityList.Remove(ability);
-        //表示を更新
-        UIUpdate();
     }
     public List<AbilityAsset> GetAbility()
     {
         return abilityList;
-    }
-    private void UIUpdate()
-    {
-        abilityUI.UpdateDatas(abilityList);
     }
 }

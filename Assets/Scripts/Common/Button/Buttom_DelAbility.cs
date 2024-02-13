@@ -9,6 +9,7 @@ public class Buttom_DelAbility : MonoBehaviour
 
     public void DelAbility(PlayerAbility playerAbility)
     {
-        if(!keepAbilityData)playerAbility.RemoveAbility(keepAbilityData.Ability);
+        if(keepAbilityData)playerAbility.RemoveAbility(keepAbilityData.Ability);
+        keepAbilityData.Ability = null;
     }
 }
