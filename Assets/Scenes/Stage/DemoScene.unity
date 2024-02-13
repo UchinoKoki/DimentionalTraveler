@@ -163,6 +163,8 @@ MonoBehaviour:
     m_Flags: 0
   mouseSensitivity: 1
   player: {fileID: 1510049058}
+  xRotationMinClamp: -85
+  xRotationMaxClamp: 85
 --- !u!4 &5844330
 Transform:
   m_ObjectHideFlags: 0
