@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        transform.Translate(moveVelocity * speed);
+        transform.Translate(moveVelocity.x * speed, 0, moveVelocity.y * speed);
     }
     public void OnMove(InputAction.CallbackContext context)
     {
