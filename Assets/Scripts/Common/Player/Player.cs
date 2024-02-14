@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     PlayerMove playerMove;                      //プレイヤーの移動を管理するクラス
     PlayerJump playerJump;                      //プレイヤーのジャンプを管理するクラス
     FootColliderObserver footColliderObserver;  //足元のコライダーの挙動を監視するクラス
+    CenterRay centerRay;                        //カメラの中心からレイを飛ばすクラス
 
     #region 動き
     Rigidbody rb;                               //プレイヤーのRigidbody
