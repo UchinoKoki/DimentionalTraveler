@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 1f;
     public float jumpPower = 5.0f;
     [SerializeField] private Vector2 moveVelocity;
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        transform.Translate(moveVelocity.x * speed, 0, moveVelocity.y * speed);
+        transform.Translate(-moveVelocity.x * speed, 0, moveVelocity.y * speed);
     }
     public void OnMove(InputAction.CallbackContext context)
     {
