@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        transform.Translate(-moveVelocity.x * speed, 0, moveVelocity.y * speed);
+        transform.Translate(-moveVelocity.x * speed, 0,  -moveVelocity.y * speed);
     }
     public void OnMove(InputAction.CallbackContext context)
     {
