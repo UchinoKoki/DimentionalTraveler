@@ -5,50 +5,59 @@ using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
-    [SerializeField] private float jumpPower = 5.0f;//1フレームで上昇する力
-    private bool isGrounded;                //地面に接地しているかどうか
-    [SerializeField] private bool isJumping;//ジャンプ中かどうか
-    [SerializeField] private float jumpTime;//ジャンプする時間
-    private float jumpTimeCounter;          //ジャンプする時間のカウンター
-    public int MaxJumpCount;                   //ジャンプした回数
-    private int jumpCount;                  //ジャンプした回数
+    [SerializeField] private float jumpPower = 5.0f;        //1フレームで上昇する力
+    private bool isGrounded;                                //地面に接地しているかどうか
+    [SerializeField] private bool isJumping;                //ジャンプ中かどうか
+    [SerializeField] private float jumpTimeCounter;                          //ジャンプする時間のカウンター
+    [SerializeField] private float jumpTime;                //ジャンプする時間
+    public int MaxJumpCount;                                //ジャンプした回数
+    [SerializeField]private int jumpCount;                  //ジャンプした回数
+    Rigidbody rb;                                           //プレイヤーのRigidbody
 
-    private void Start() {
-        jumpTimeCounter = jumpTime;
-        jumpCount = MaxJumpCount;
+    private void Start() {  
+        jumpCount = MaxJumpCount;               //ジャンプ回数をリセット
+        rb = GetComponent<Rigidbody>();         //Rigidbodyを取得
+        jumpTimeCounter = jumpTime;             //ジャンプ時間を設定
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if(isJumping){
-            if(jumpTimeCounter > 0)
-            {
-                Jump();
-                Debug.Log("Jump");
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
-                jumpTimeCounter = jumpTime;
-            }
+        if(isJumping && jumpTimeCounter > 0){
+            Jump();
+            jumpTimeCounter -= Time.deltaTime;
         }
     }
+    /// <summary>
+    /// ジャンプボタンが押されたときに呼び出される
+    /// </summary>
+    /// <param name="context">
+    /// InputSystemのコンテキスト
+    /// </param>
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started)
-        {
-            Debug.Log("JumpStart");
+        if(context.started && jumpCount > 0){
+            jumpCount--;
             isJumping = true;
+            jumpTimeCounter = jumpTime;
         }
-        if(context.canceled)
+        if(context.canceled && isJumping)
         {
-            Debug.Log("JumpEnd");
-            jumpCount -= 1;
             isJumping = false;
         }
     }
+    /// <summary>
+    /// ジャンプする処理
+    /// </summary>
     private void Jump()
     {
-        transform.Translate(0, jumpPower, 0);
+        rb.AddForce(Vector3.up * jumpPower, ForceMode.Acceleration);
+    }
+    /// <summary>
+    /// ジャンプ回数をリセットする
+    /// FootColliderObserverからPlayer経由で呼び出し。
+    /// </summary>
+    public void ResetCount()
+    {
+        jumpCount = MaxJumpCount;
+        jumpTimeCounter = jumpTime;
     }
 }

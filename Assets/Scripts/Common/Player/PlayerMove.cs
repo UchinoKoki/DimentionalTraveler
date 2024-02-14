@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float speed = 1f;
-    public float jumpPower = 5.0f;
-    [SerializeField] private Vector2 moveVelocity;
+    public float speed = 1f;                        //プレイヤーの移動速度
+    [SerializeField] private Vector2 moveVelocity;  //プレイヤーの移動方向
+
+    Rigidbody rb;                                   //プレイヤーのRigidbody
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -20,11 +21,15 @@ public class PlayerMove : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        transform.Translate(-moveVelocity.x * speed, 0,  -moveVelocity.y * speed);
+        Move();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
         moveVelocity = context.ReadValue<Vector2>();
+    }
+    private void Move()
+    {
+        rb.velocity = transform.TransformDirection(-moveVelocity.x* speed,0f,-moveVelocity.y* speed);
     }
 
 }
