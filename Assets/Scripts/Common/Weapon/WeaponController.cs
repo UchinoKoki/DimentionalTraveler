@@ -60,4 +60,28 @@ public class WeaponController : MonoBehaviour
             Debug.LogError("WeaponHand is not set");
         }
     }
+    public GameObject GetHandWeapon()
+    {
+        if (nowWeaponHand == WeaponHand.Left)
+        {
+            if(leftWeaponAsset == null)
+            {
+                return null;
+            }
+            return leftWeaponAsset.WeaponAssetObject;
+        }
+        else if (nowWeaponHand == WeaponHand.Right)
+        {
+            if(rightWeaponAsset == null)
+            {
+                return null;
+            }
+            return rightWeaponAsset.WeaponAssetObject;
+        }
+        else
+        {
+            Debug.LogError("WeaponHand is not set");
+            return null;
+        }
+    }
 }

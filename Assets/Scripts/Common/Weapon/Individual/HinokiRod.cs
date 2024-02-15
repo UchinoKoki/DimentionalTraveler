@@ -15,4 +15,8 @@ public class HinokiRod : BaseWeapon
     {
         
     }
+    override public void Attack()
+    {
+        Debug.Log("HinokiRod Attack");
+    }
 }

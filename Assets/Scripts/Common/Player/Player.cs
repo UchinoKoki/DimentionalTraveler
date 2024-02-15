@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// プレイヤーの挙動を管理するクラス
 /// </summary>
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject  camera;        //プレイヤーのカメラ
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     Rigidbody rb;                               //プレイヤーのRigidbody
     public float gravity = 9.8f;                //重力
     #endregion
+
+    WeaponHand weaponHand;                      //武器を持っている手
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +50,6 @@ public class Player : MonoBehaviour
     }
     public void ResetJumpCount()
     {
-        //ジャンプ回数をリセット
         playerJump.ResetCount();
     }
     public void FixedUpdate()
@@ -76,10 +78,10 @@ public class Player : MonoBehaviour
         //アイテムを取得する
         if(context.started)
         {
-            GetWeapon();
+            PickUpWeapon();
         }
     }
-    private void GetWeapon()
+    private void PickUpWeapon()
     {
         //もしアイテムが武器の場合、武器を持ち変える
         if(getWeapon.GetWeaponObject() != null)
@@ -88,5 +90,28 @@ public class Player : MonoBehaviour
             weaponController.GetWeapon(nearObject);
             getWeapon.RemoveWeapon(nearObject);
         }
+    }
+    /// <summary>
+    /// 攻撃入力があったときに呼び出される
+    /// </summary>
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (GetHandWeapon() == null) return;
+        BaseWeapon weapon = GetHandWeapon().GetComponentInChildren<BaseWeapon>();
+        if (weapon == null) return;
+
+        if (context.started)
+        {
+            weapon.Attack();
+        }
+        if (context.canceled)
+        {
+            weapon.EndAttack();
+        }
+    }
+    //手に持っている武器を取得
+    private GameObject GetHandWeapon()
+    {
+        return weaponController.GetHandWeapon();
     }
 }
