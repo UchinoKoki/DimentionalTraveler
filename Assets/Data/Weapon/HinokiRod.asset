@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec0b411890a8db48a15bb9afacffd8f, type: 3}
+  m_Name: HinokiRod
+  m_EditorClassIdentifier: 
+  WeaponAssetObject: {fileID: 2925107274249329503, guid: 009799f9fa284cc4e95c9f77d1aad730,
+    type: 3}
+  weaponName: HinokiRod
+  attackPower: 0
+  attackSpeed: 0
+  attackRange: 0
