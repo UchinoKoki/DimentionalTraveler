@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseWeapon : MonoBehaviour
 {
-    public void Set()
+    public virtual void Set()
     {
         
     }

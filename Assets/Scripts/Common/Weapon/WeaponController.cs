@@ -22,15 +22,38 @@ public class WeaponController : MonoBehaviour
     {
         Debug.Log("InputRightClick");
     }
-    public void GetWeapon(WeaponAsset _weaponAsset)
+    public void GetWeapon(GameObject _weaponObject)
     {
         if (nowWeaponHand == WeaponHand.Left)
         {
-            leftWeaponAsset = _weaponAsset;
+            if(leftWeaponAsset != null)
+            {
+                DropWeapon(_weaponObject.transform.position);
+            }
+            leftWeaponAsset = _weaponObject.GetComponent<KeepWeaponData>().WeaponAsset;
         }
         else if (nowWeaponHand == WeaponHand.Right)
         {
-            rightWeaponAsset = _weaponAsset;
+            if(rightWeaponAsset != null)
+            {
+                DropWeapon(_weaponObject.transform.position);
+            }
+            rightWeaponAsset = _weaponObject.GetComponent<KeepWeaponData>().WeaponAsset;
+        }
+        else
+        {
+            Debug.LogError("WeaponHand is not set");
+        }
+    }
+    private void DropWeapon(Vector3 _beforItemPosition)
+    {
+        if (nowWeaponHand == WeaponHand.Left)
+        {
+            Instantiate(leftWeaponAsset.WeaponAssetObject, _beforItemPosition, transform.rotation);
+        }
+        else if (nowWeaponHand == WeaponHand.Right)
+        {
+            Instantiate(leftWeaponAsset.WeaponAssetObject, _beforItemPosition, transform.rotation);
         }
         else
         {

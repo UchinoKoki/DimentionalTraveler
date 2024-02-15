@@ -32,4 +32,8 @@ public class GetWeapon : MonoBehaviour
         }
         return nearWeapon;
     }
+    public void RemoveWeapon(GameObject _weapon){
+        canGetList.Remove(_weapon);
+        Destroy(_weapon);
+    }
 }

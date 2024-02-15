@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// プレイヤーの挙動を管理するクラス
@@ -70,18 +71,22 @@ public class Player : MonoBehaviour
         //プレイヤーのアニメーションを設定
         playerAnim.PlayAnim(Mathf.Clamp(Mathf.Abs(playerMove.GetMoveVelocity().x) + Mathf.Abs(playerMove.GetMoveVelocity().y),0,1), playerMove.GetMoveVelocity().x, playerMove.GetMoveVelocity().y, playerMove.isDash);
     }
-    public void GetAnyItem()
+    public void GetAnyItem(InputAction.CallbackContext context)
     {
-        Debug.Log(getWeapon.GetWeaponObject());
+        //アイテムを取得する
+        if(context.started)
+        {
+            GetWeapon();
+        }
+    }
+    private void GetWeapon()
+    {
         //もしアイテムが武器の場合、武器を持ち変える
         if(getWeapon.GetWeaponObject() != null)
         {
-            weaponController.GetWeapon(getWeapon.GetComponent<GetWeapon>().GetWeaponObject().GetComponent<KeepWeaponData>().WeaponAsset);
+            GameObject nearObject = getWeapon.GetWeaponObject();
+            weaponController.GetWeapon(nearObject);
+            getWeapon.RemoveWeapon(nearObject);
         }
-
-    }
-    private void DropWeapon()
-    {
-        //武器をドロップする
     }
 }
