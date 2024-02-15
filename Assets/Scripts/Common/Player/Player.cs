@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     PlayerMove playerMove;                      //プレイヤーの移動を管理するクラス
     PlayerJump playerJump;                      //プレイヤーのジャンプを管理するクラス
     FootColliderObserver footColliderObserver;  //足元のコライダーの挙動を監視するクラス
+    PlayerAnim playerAnim;                      //プレイヤーのアニメーションを管理するクラス
     CenterRay centerRay;                        //カメラの中心からレイを飛ばすクラス
 
     #region 動き
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
         playerMove = GetComponent<PlayerMove>();
         footColliderObserver = GetComponent<FootColliderObserver>();
         playerJump = GetComponent<PlayerJump>();
+        playerAnim = GetComponent<PlayerAnim>();
         rb = GetComponent<Rigidbody>();
 
         //カーソルをロック
@@ -43,10 +45,22 @@ public class Player : MonoBehaviour
     public void FixedUpdate()
     {
         Gravity();
+        SetAnim();
     }
+    /// <summary>
+    /// プレイヤーの重力を設定する
+    /// </summary>
     private void Gravity()
     {
         //重力を追加
         rb.AddForce(Vector3.down * gravity, ForceMode.Acceleration);
+    }
+    /// <summary>
+    /// プレイヤーのアニメーションを設定する
+    /// </summary>
+    private void SetAnim()
+    {
+        //プレイヤーのアニメーションを設定
+        playerAnim.PlayAnim(Mathf.Clamp(Mathf.Abs(playerMove.GetMoveVelocity().x) + Mathf.Abs(playerMove.GetMoveVelocity().y),0,1), playerMove.GetMoveVelocity().x, playerMove.GetMoveVelocity().y, playerMove.isDash);
     }
 }
