@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     public float speed = 1f;                        //プレイヤーの移動速度
     private float actualSpeed;                      //実際のプレイヤーの移動速度
-    Vector2 moveVelocity;  //プレイヤーの移動方向
+    public Vector2 moveVelocity;  //プレイヤーの移動方向
     public bool isDash = false;                     //ダッシュ中かどうか
 
     Rigidbody rb;                                   //プレイヤーのRigidbody
@@ -34,26 +34,6 @@ public class PlayerMove : MonoBehaviour
     /// <returns></returns>
     public Vector2 GetMoveVelocity(){
         return moveVelocity;
-    }
-
-    /// <summary>
-    /// プレイヤーの移動処理
-    /// </summary>
-    /// <param name="context"></param>
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveVelocity = context.ReadValue<Vector2>();
-    }
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        if(context.started)
-        {
-            isDash = true;
-        }
-        if(context.canceled)
-        {
-            isDash = false;
-        }
     }
     private void Move()
     {

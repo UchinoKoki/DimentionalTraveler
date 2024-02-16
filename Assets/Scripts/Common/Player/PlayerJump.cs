@@ -8,7 +8,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float jumpPower = 5.0f;        //1フレームで上昇する力
     private bool isGrounded;                                //地面に接地しているかどうか
     [SerializeField] private bool isJumping;                //ジャンプ中かどうか
-    [SerializeField] private float jumpTimeCounter;                          //ジャンプする時間のカウンター
+    [SerializeField] private float jumpTimeCounter;         //ジャンプする時間のカウンター
     [SerializeField] private float jumpTime;                //ジャンプする時間
     public int MaxJumpCount;                                //ジャンプした回数
     [SerializeField]private int jumpCount;                  //ジャンプした回数
@@ -26,23 +26,18 @@ public class PlayerJump : MonoBehaviour
             jumpTimeCounter -= Time.deltaTime;
         }
     }
-    /// <summary>
-    /// ジャンプボタンが押されたときに呼び出される
-    /// </summary>
-    /// <param name="context">
-    /// InputSystemのコンテキスト
-    /// </param>
-    public void OnJump(InputAction.CallbackContext context)
+    public void JumpAction()
     {
-        if(context.started && jumpCount > 0){
+        if(jumpCount > 0){
+            Jump();
             jumpCount--;
             isJumping = true;
             jumpTimeCounter = jumpTime;
         }
-        if(context.canceled && isJumping)
-        {
-            isJumping = false;
-        }
+    }
+    public void FinishJump()
+    {
+        if(isJumping)isJumping = false;
     }
     /// <summary>
     /// ジャンプする処理

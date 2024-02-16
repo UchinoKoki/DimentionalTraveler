@@ -24,8 +24,6 @@ public class Player : MonoBehaviour
     public float gravity = 9.8f;                //重力
     #endregion
 
-    WeaponHand weaponHand;                      //武器を持っている手
-
     // Start is called before the first frame update
     void Start()
     {
@@ -92,6 +90,41 @@ public class Player : MonoBehaviour
         }
     }
     /// <summary>
+    /// プレイヤーの移動処理
+    /// </summary>
+    /// <param name="context"></param>
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        playerMove.moveVelocity = context.ReadValue<Vector2>();
+    }
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            playerMove.isDash = true;
+        }
+        if(context.canceled)
+        {
+            playerMove.isDash = false;
+        }
+    }
+    /// <summary>
+    /// ジャンプボタンが押されたときに呼び出される
+    /// </summary>
+    /// <param name="context">
+    /// InputSystemのコンテキスト
+    /// </param>
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if(context.started){
+            playerJump.JumpAction();
+        }
+        if(context.canceled)
+        {
+            playerJump.FinishJump();
+        }
+    }
+    /// <summary>
     /// 攻撃入力があったときに呼び出される
     /// </summary>
     public void OnAttack(InputAction.CallbackContext context)
@@ -99,15 +132,23 @@ public class Player : MonoBehaviour
         if (GetHandWeapon() == null) return;
         BaseWeapon weapon = GetHandWeapon().GetComponentInChildren<BaseWeapon>();
         if (weapon == null) return;
-
+        //攻撃ボタンが押されたときに武器を振る
         if (context.started)
         {
+            playerAnim.PlayerAttackAnim(true);
             weapon.Attack();
         }
         if (context.canceled)
         {
+            playerAnim.PlayerAttackAnim(false);
             weapon.EndAttack();
         }
+    }
+    public void OnScroll(InputAction.CallbackContext context)
+    {
+        context.ReadValue<Vector2>();
+        float scroll = context.ReadValue<Vector2>().y;
+        weaponController.ChangeWeapon(scroll);
     }
     //手に持っている武器を取得
     private GameObject GetHandWeapon()
