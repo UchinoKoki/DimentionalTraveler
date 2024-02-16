@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField]private WeaponAsset leftWeaponAsset;   
-    [SerializeField]private List<GameObject> weaponAnchor = new List<GameObject>();
-    [SerializeField] private List<WeaponAsset> weaponAssetList = new List<WeaponAsset>();
-    [SerializeField]private List<GameObject> weaponObjectList = new List<GameObject>();
-    public int nowWeaponSlot = 0;
-    public int nowMaxWeaponSlot = 2;
+    [SerializeField]private WeaponAsset leftWeaponAsset;                                    //左手の武器
+    [SerializeField]private List<GameObject> weaponAnchor = new List<GameObject>();         //武器を持つアンカー
+    [SerializeField] private List<WeaponAsset> weaponAssetList = new List<WeaponAsset>();   //武器のリスト
+    [SerializeField]private List<GameObject> weaponObjectList = new List<GameObject>();     //武器のオブジェクトのリスト
+    public int nowWeaponSlot = 0;                                                           //現在の武器のスロット
+    public int nowMaxWeaponSlot = 2;                                                        //最大の武器のスロット
 
-    public bool isScroll = false;                      //スクロール中かどうか
+    public bool isScroll = false;                                                           //スクロール中かどうか
 
     public void Input0()
     {
@@ -36,11 +36,18 @@ public class WeaponController : MonoBehaviour
         //取得した武器の削除
         Destroy(_weaponObject);
     }
+    /// <summary>
+    /// 武器を捨てる
+    /// </summary>
     private void DropWeapon(Vector3 _beforItemPosition)
     {
         if (leftWeaponAsset == null) return;
         Instantiate(leftWeaponAsset.WeaponAssetObject, _beforItemPosition, transform.rotation);
     }
+    /// <summary>
+    /// 手に持っている武器を返す
+    /// </summary>
+    /// <returns></returns>
     public GameObject GetHandWeapon()
     {
         if(leftWeaponAsset == null)
@@ -49,6 +56,10 @@ public class WeaponController : MonoBehaviour
         }
         return leftWeaponAsset.WeaponAssetObject;
     }
+    /// <summary>
+    /// 武器を変更する
+    /// </summary>
+    /// <param name="way"></param>
     public void ChangeWeapon(float way)
     {
         if(!isScroll)
@@ -77,6 +88,9 @@ public class WeaponController : MonoBehaviour
         }
         SetWeapon();
     }
+    /// <summary>
+    /// 武器をセットする
+    /// </summary>
     private void SetWeapon()
     {
         leftWeaponAsset = weaponAssetList[nowWeaponSlot];
