@@ -16,7 +16,6 @@ public class FootColliderObserver : MonoBehaviour
         if(other.gameObject.CompareTag("Ground"))   
         {
             player.ResetJumpCount();
-            Debug.Log("Grounded");
         }   
     }
 }
