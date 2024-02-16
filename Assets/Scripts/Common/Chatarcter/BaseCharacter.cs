@@ -16,6 +16,7 @@ public class BaseCharacter : MonoBehaviour
     }
     public void Dead()
     {
-        Destroy(gameObject);
+        //死亡処理
+        gameObject.SetActive(false);
     }
 }

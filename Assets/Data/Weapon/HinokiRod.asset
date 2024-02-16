@@ -15,6 +15,6 @@ MonoBehaviour:
   WeaponAssetObject: {fileID: 2925107274249329503, guid: 009799f9fa284cc4e95c9f77d1aad730,
     type: 3}
   WeaponName: 
-  AttackPower: 1
+  AttackPower: 10
   AttackSpeed: 1
   AttackRange: 1

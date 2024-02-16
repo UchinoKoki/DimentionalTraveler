@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dat_Cubism
   m_EditorClassIdentifier: 
   enemyName: 
-  hp: 1
+  hp: 50
   attack: 1
   enemyObject: {fileID: 0}
   moveSpeed: 1

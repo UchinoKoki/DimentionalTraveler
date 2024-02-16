@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class Player : BaseCharacter
 {
-    [SerializeField] private GameObject  camera;        //プレイヤーのカメラ
+    [SerializeField] private GameObject  camera;     //プレイヤーのカメラ
     [SerializeField] private GameObject itemArea;    //アイテムを取得するエリア
     PlayerMove playerMove;                      //プレイヤーの移動を管理するクラス
     PlayerJump playerJump;                      //プレイヤーのジャンプを管理するクラス

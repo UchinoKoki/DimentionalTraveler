@@ -13,6 +13,7 @@ public class Enemy : BaseCharacter
     {
         hp = enemyAsset.hp;
         enemyAI = GetComponent<BaseEnemyAI>();
+        EnemyManager.instance.AddEnemy(this);
     }
     public void Move()  
     {
