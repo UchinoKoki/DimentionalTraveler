@@ -9,11 +9,10 @@ public class Enemy : BaseCharacter
 {
     public EnemyAsset enemyAsset;
     public BaseEnemyAI enemyAI;
-    public void Init(EnemyAsset _enemyAsset)
+    private void Start()
     {
-        enemyAsset = _enemyAsset;
         hp = enemyAsset.hp;
-        enemyAI = GetComponentInChildren<BaseEnemyAI>();
+        enemyAI = GetComponent<BaseEnemyAI>();
     }
     public void Move()  
     {

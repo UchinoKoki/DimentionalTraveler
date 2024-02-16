@@ -6,7 +6,7 @@ public class BaseCharacter : MonoBehaviour
 {
     public int hp;                      //体力
 
-    public void Damage(int _damage)
+    public void Damage(int _damage,GameObject _attacker)
     {
         hp -= _damage;
         if(hp <= 0)

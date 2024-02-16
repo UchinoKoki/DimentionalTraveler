@@ -18,6 +18,7 @@ public class Player : BaseCharacter
     CenterRay centerRay;                        //カメラの中心からレイを飛ばすクラス
     WeaponController weaponController;          //武器のコントローラー
     GetWeapon getWeapon;                        //武器を取得するクラス
+    PlayerAttack playerAttack;                  //プレイヤーの攻撃を管理するクラス
 
     #region 動き
     Rigidbody rb;                               //プレイヤーのRigidbody
@@ -34,6 +35,7 @@ public class Player : BaseCharacter
         playerAnim = GetComponent<PlayerAnim>();
         weaponController = GetComponent<WeaponController>();
         getWeapon = itemArea.GetComponent<GetWeapon>();
+        playerAttack = GetComponent<PlayerAttack>();
         centerRay = camera.GetComponent<CenterRay>();
         rb = GetComponent<Rigidbody>();
 
@@ -130,18 +132,15 @@ public class Player : BaseCharacter
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (GetHandWeapon() == null) return;
-        BaseWeapon weapon = GetHandWeapon().GetComponentInChildren<BaseWeapon>();
-        if (weapon == null) return;
-        //攻撃ボタンが押されたときに武器を振る
-        if (context.started)
+        if(context.started)
         {
+            playerAttack.Attack(GetHandWeapon());
             playerAnim.PlayerAttackAnim(true);
-            weapon.Attack();
         }
-        if (context.canceled)
+        if(context.canceled)
         {
+            playerAttack.EndAttack();
             playerAnim.PlayerAttackAnim(false);
-            weapon.EndAttack();
         }
     }
     public void OnScroll(InputAction.CallbackContext context)

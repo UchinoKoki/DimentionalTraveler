@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ec0b411890a8db48a15bb9afacffd8f, type: 3}
-  m_Name: HinokiRod
+  m_Script: {fileID: 11500000, guid: 41fe6a587e4c9454eb5e3b329aa56916, type: 3}
+  m_Name: dat_Cubism
   m_EditorClassIdentifier: 
-  WeaponAssetObject: {fileID: 2925107274249329503, guid: 009799f9fa284cc4e95c9f77d1aad730,
-    type: 3}
-  WeaponName: 
-  AttackPower: 1
-  AttackSpeed: 1
-  AttackRange: 1
+  enemyName: 
+  hp: 1
+  attack: 1
+  enemyObject: {fileID: 0}
+  moveSpeed: 1
+  attackSpeed: 1
+  attackRange: 1

@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public void Attack()
+    bool attack = false;
+    BaseWeapon weapon;
+
+    [SerializeField] private PlayerMeleeAttackArea attackArea;
+    public void Attack(GameObject _weapon)
     {
-        BaseWeapon weapon = GetComponentInChildren<BaseWeapon>();
+        weapon = _weapon.GetComponentInChildren<BaseWeapon>();
+        if (weapon == null) return;
+        weapon.SetEnemyList(attackArea.GetEnemyList());
         weapon.Attack();
+    }
+    public void EndAttack()
+    {
+        bool attack = false;
+        weapon.EndAttack();
     }
 }

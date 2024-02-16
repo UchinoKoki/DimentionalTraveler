@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HinokiRod : BaseWeapon
+public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,13 +14,5 @@ public class HinokiRod : BaseWeapon
     void Update()
     {
         
-    }
-    override public void Attack()
-    {
-        foreach(var enemy in enemyList)
-        {
-            //敵にダメージを与える
-            enemy.Damage(GetItem().AttackPower,this.gameObject);
-        }
     }
 }

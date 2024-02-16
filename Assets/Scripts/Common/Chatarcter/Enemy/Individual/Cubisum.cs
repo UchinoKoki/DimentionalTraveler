@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Cubisum : BaseEnemyAI
 {
-    public EnemyAsset enemyAsset;
+    
 }
