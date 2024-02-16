@@ -32,8 +32,8 @@ public class WeaponController : MonoBehaviour
         //武器の登録
         leftWeaponAsset = _weaponObject.GetComponent<KeepWeaponData>().WeaponAsset;
         weaponAssetList[nowWeaponSlot] = leftWeaponAsset;
-        weaponObjectList[nowWeaponSlot] = Instantiate(leftWeaponAsset.WeaponAssetObject, weaponAnchor[0].transform.position, transform.rotation, weaponAnchor[0].transform);
-        //取得した武器の削除
+        weaponObjectList[nowWeaponSlot] = Instantiate(leftWeaponAsset.WeaponAssetObject, weaponAnchor[0].transform.position, weaponAnchor[0].transform.rotation, weaponAnchor[0].transform);
+        //取得したフィールド上オブジェクトの削除
         Destroy(_weaponObject);
     }
     /// <summary>

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// プレイヤーの挙動を管理するクラス
 /// </summary>
 
-public class Player : MonoBehaviour
+public class Player : BaseCharacter
 {
     [SerializeField] private GameObject  camera;        //プレイヤーのカメラ
     [SerializeField] private GameObject itemArea;    //アイテムを取得するエリア
