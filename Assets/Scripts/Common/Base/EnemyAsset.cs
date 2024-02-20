@@ -11,4 +11,5 @@ public class EnemyAsset : ScriptableObject {
     public float moveSpeed;
     public float attackSpeed;
     public float attackRange;
+    public float rotationSpeed;
 }
