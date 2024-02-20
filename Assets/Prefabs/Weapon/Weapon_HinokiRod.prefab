@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4199938204941266641}
   - component: {fileID: 2298686183964961002}
   - component: {fileID: -446583096273134257}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_HinokiRod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
