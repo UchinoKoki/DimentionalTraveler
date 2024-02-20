@@ -13,7 +13,10 @@ public class BaseSearchTrigger : MonoBehaviour
     private void Start() {
         baseEnemyAI = transform.parent.GetComponent<BaseEnemyAI>();
     }
+    
+    private void FixedUpdate() {
 
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -29,7 +32,7 @@ public class BaseSearchTrigger : MonoBehaviour
                 targetList.Remove(target);
                 continue;
             }
-            
+            Debug.Log($"TargetList: {targetList.Count}");
             //優先度の調査
             baseEnemyAI.CheckPriority(targetList);
         }
