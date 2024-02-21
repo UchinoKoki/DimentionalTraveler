@@ -9,7 +9,7 @@ public class GatePopEnemy : MonoBehaviour
     private float popTimer;
     [SerializeField] private float popTime;
     [SerializeField] private float popQuantity;
-    [SerializeField] bool isOn = false;
+    public bool isOn = false;
 
     [SerializeField] private float popAreaRadius = 1f;
 

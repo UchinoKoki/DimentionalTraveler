@@ -51,6 +51,7 @@ public class BaseEnemyAI : MonoBehaviour
     public void SetDistination(Vector3 _pos)
     {
         //目的地の設定
+        if(agent == null) agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(_pos);
     }
 }

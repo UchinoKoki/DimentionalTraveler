@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Cubisum_SearchTrigger : BaseSearchTrigger
 {
-
+    void FixedUpdate()
+    {
+        
+    }
 }
