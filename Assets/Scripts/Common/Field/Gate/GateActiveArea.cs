@@ -5,14 +5,17 @@ using UnityEngine;
 public class GateActiveArea : MonoBehaviour
 {
     GateProgress gateProgress;
-    List<GameObject> targetList = new List<GameObject>();
+    [SerializeField] private List<GameObject> targetList = new List<GameObject>();
 
     private void Start() {
         gateProgress = transform.parent.GetComponent<GateProgress>();
     }
     private void OnTriggerStay(Collider other) {
+        //プレイヤー以外は無視
         if (!other.CompareTag("Player")) return;
-        targetList.Add(other.gameObject);
+        //リストに無ければ追加
+        if(!targetList.Contains(other.gameObject)) targetList.Add(other.gameObject);
+        //プレイヤーがいるならゲートチャージ
         gateProgress.Charge(true);
     }
     private void OnTriggerExit(Collider other) {

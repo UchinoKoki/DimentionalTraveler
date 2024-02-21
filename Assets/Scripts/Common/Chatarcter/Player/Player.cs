@@ -154,4 +154,16 @@ public class Player : BaseCharacter
     {
         return weaponController.GetHandWeapon();
     }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            GameObject castItem = centerRay.CastRayCenterObject();
+            if(castItem == null) return;
+            if(castItem.CompareTag("Gate"))
+            {
+                castItem.GetComponent<GateProgress>().isGateCharging = true;
+            }
+        }
+    }
 }

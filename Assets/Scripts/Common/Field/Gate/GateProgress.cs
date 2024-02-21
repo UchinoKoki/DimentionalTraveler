@@ -24,11 +24,10 @@ public class GateProgress : MonoBehaviour
         
     }
     private void FixedUpdate() {
-
+        
     }
     public void Charge(bool _isCharge)
     {
-        Debug.Log($"Charge{_isCharge}");
         if(!isGateCharging) return;
         if(_isCharge)
         {
