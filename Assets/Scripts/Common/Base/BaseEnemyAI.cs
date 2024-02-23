@@ -9,9 +9,10 @@ public class BaseEnemyAI : MonoBehaviour
     protected NavMeshAgent agent;
     protected GameObject targetObject;
 
-    public float moveSpeed;
-    public float rotationSpeed;
-    public float attackRange;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float rotationSpeed;
+    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackSpeed;
 
     private Enemy enemy;
 

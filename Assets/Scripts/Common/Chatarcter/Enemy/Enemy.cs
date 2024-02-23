@@ -8,7 +8,7 @@ using UnityEngine;
 public class Enemy : BaseCharacter
 {
     public EnemyAsset enemyAsset;
-    public BaseEnemyAI enemyAI;
+    [SerializeField] protected BaseEnemyAI enemyAI;
     private void Start()
     {
         hp = enemyAsset.hp;
