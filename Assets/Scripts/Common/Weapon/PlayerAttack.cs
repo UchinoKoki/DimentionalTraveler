@@ -4,20 +4,46 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    bool attack = false;
-    BaseWeapon weapon;
+    bool attack = false;                //攻撃が押されているか
+    BaseWeapon weapon;                  //武器
+    private float attackCoolTimer = 0;  //攻撃のクールタイム
+    private GameObject weaponObject;    //武器のオブジェクト
 
-    [SerializeField] private PlayerMeleeAttackArea attackArea;
+    [SerializeField] private PlayerMeleeAttackArea attackArea;  //攻撃範囲
+
+    /// <summary>
+    /// 攻撃ボタンが押された時の処理
+    /// </summary>
     public void Attack(GameObject _weapon)
     {
-        weapon = _weapon.GetComponentInChildren<BaseWeapon>();
-        if (weapon == null) return;
-        weapon.SetEnemyList(attackArea.GetEnemyList());
-        weapon.Attack();
+        attack = true;
+        weaponObject = _weapon;
     }
+    /// <summary>
+    /// 攻撃ボタンが離された時の処理
+    /// </summary>
     public void EndAttack()
     {
         bool attack = false;
         weapon.EndAttack();
+    }
+
+    private void FixedUpdate() {
+        //攻撃
+
+        //クールダウン
+        if(attackCoolTimer > 0) attackCoolTimer -= Time.deltaTime;
+
+        //攻撃が押されているか確認
+        if(!attack) return;             //攻撃が押されていない場合は処理を抜ける                                    
+        if (attackCoolTimer > 0) return;//クールダウン中は処理を抜ける
+        weapon = weaponObject.GetComponentInChildren<BaseWeapon>();
+        if (weapon == null) return; //武器がない場合は処理を抜ける
+
+        //攻撃処理
+        weapon.SetEnemyList(attackArea.GetEnemyList());
+        weapon.Attack();
+        attackCoolTimer = weapon.GetCoolTime();
+        Debug.Log("PlayerAttack Attack");
     }
 }

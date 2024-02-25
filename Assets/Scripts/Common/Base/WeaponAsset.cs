@@ -9,4 +9,5 @@ public class WeaponAsset: ScriptableObject {
     public int AttackPower; 
     public float AttackSpeed;
     public float AttackRange;
+    public float coolTime;
 }

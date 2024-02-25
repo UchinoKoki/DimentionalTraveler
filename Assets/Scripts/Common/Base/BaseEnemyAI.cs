@@ -36,7 +36,7 @@ public class BaseEnemyAI : MonoBehaviour
         if(agent.remainingDistance < attackRange)
         {
             //攻撃処理
-            // enemy.Attack();
+            Attack();
         }
         else
         {
@@ -48,6 +48,10 @@ public class BaseEnemyAI : MonoBehaviour
     {
         //優先度の調査
         Debug.LogError("Set Priority");
+    }
+    public virtual void Attack()
+    {
+        Debug.LogWarning("Attack is not override");
     }
     public void SetDistination(Vector3 _pos)
     {

@@ -7,24 +7,13 @@ using UnityEngine;
 /// </summary>
 public class Enemy : BaseCharacter
 {
-    public EnemyAsset enemyAsset;
-    [SerializeField] protected BaseEnemyAI enemyAI;
+    public EnemyAsset enemyAsset;                   //敵のステータス
+    [SerializeField] protected BaseEnemyAI enemyAI;//敵のAI
     private void Start()
     {
+        //ステータスの設定
         hp = enemyAsset.hp;
         enemyAI = GetComponent<BaseEnemyAI>();
         EnemyManager.instance.AddEnemy(this);
-    }
-    public void Move()  
-    {
-        //敵の移動処理
-    }
-    public void Attack()
-    {
-        //敵の攻撃処理
-    }
-    public void Dead()
-    {
-        //敵の死亡処理
     }
 }

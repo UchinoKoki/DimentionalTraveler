@@ -30,4 +30,8 @@ public class BaseWeapon : MonoBehaviour
     {
         return weaponAsset = gameObject.GetComponent<KeepWeaponData>().WeaponAsset;
     }
+    public float GetCoolTime()
+    {
+        return weaponAsset.coolTime;
+    }
 }
