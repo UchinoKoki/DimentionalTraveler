@@ -17,9 +17,8 @@ public class FadeManager : MonoBehaviour
         //シングルトン
         if(instance == null){
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }else{
-            Destroy(gameObject);
+            Destroy(this);
         }
 
         //フェードの制御クラスを取得

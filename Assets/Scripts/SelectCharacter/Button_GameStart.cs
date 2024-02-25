@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fade;
 
 public class Button_GameStart : MonoBehaviour
 {
     [SerializeField] private List<GameObject> observeObjectList;
+    [SerializeField] private string sceneName;
     public void OnClick()
     {
         Debug.Log("Button_GameStart OnClick");
@@ -15,6 +17,10 @@ public class Button_GameStart : MonoBehaviour
         {
             if(item.activeSelf == true) _isComplete = false;
         }
-        if(_isComplete)SceneManager.instance.LoadScene("DemoStage");
+        if (_isComplete)
+        {
+            FadeManager.instance.FadeOut(Fade.FadeType.Normal);
+            SceneManager.instance.LoadScene(sceneName);
+        }
     }
 }
