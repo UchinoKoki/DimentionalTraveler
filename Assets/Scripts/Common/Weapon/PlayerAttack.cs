@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     public void EndAttack()
     {
-        bool attack = false;
+        attack = false;
         weapon.EndAttack();
     }
 
@@ -39,7 +39,11 @@ public class PlayerAttack : MonoBehaviour
         if (attackCoolTimer > 0) return;//クールダウン中は処理を抜ける
         weapon = weaponObject.GetComponentInChildren<BaseWeapon>();
         if (weapon == null) return; //武器がない場合は処理を抜ける
+        StartAttack();
+    }
 
+    private void StartAttack()
+    {
         //攻撃処理
         weapon.SetEnemyList(attackArea.GetEnemyList());
         weapon.Attack();
