@@ -9,11 +9,13 @@ public class BaseEnemyAI : MonoBehaviour
     protected NavMeshAgent agent;
     protected GameObject targetObject;
 
-    [SerializeField] protected float moveSpeed;
-    [SerializeField] protected float rotationSpeed;
-    [SerializeField] protected float attackRange;
-    [SerializeField] protected float attackSpeed;
+    protected float moveSpeed;
+    protected float rotationSpeed;
+    protected float attackRange;
+    protected float attackSpeed;
 
+
+    protected float attackCoolTimer = 0;
     private Enemy enemy;
 
     private void Start() {
@@ -25,6 +27,7 @@ public class BaseEnemyAI : MonoBehaviour
         moveSpeed = enemy.enemyAsset.moveSpeed;
         rotationSpeed = enemy.enemyAsset.rotationSpeed;
         attackRange = enemy.enemyAsset.attackRange;
+        attackSpeed = enemy.enemyAsset.attackSpeed;
 
         //パラメータの設定
         agent.speed = moveSpeed;
@@ -33,16 +36,21 @@ public class BaseEnemyAI : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(agent.remainingDistance < attackRange)
+        //もしターゲットとの距離が射程内であり、クールタイマーが明けていれば攻撃
+        if(agent.remainingDistance < attackRange && attackCoolTimer <= 0)
         {
             //攻撃処理
             Attack();
+            attackCoolTimer = attackSpeed;
         }
         else
         {
             if (targetObject == null) return;
             SetDistination(targetObject.transform.position);
         }
+
+        //攻撃クールダウン
+        if(attackCoolTimer > -1) attackCoolTimer -= Time.deltaTime;
     }
     public virtual void CheckPriority(List<GameObject> _list)
     {

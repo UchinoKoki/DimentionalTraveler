@@ -21,4 +21,8 @@ public class Cubisum : BaseEnemyAI
         targetObject = nearTarget;
         base.SetDistination(nearTarget.transform.position);
     }
+    public override void Attack()
+    {
+        Debug.Log("Cubisum Attack");
+    }
 }
