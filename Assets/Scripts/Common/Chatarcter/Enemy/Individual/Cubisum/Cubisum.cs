@@ -23,6 +23,16 @@ public class Cubisum : BaseEnemyAI
     }
     public override void Attack()
     {
-        Debug.Log("Cubisum Attack");
+        List<GameObject> _attackTargetList = base.GetTargetList();
+        foreach(var target in _attackTargetList){
+            if(target == null){
+                _attackTargetList.Remove(target);
+                continue;
+            }
+            else{
+                //攻撃処理
+                target.GetComponentInChildren<BaseCharacter>().Damage(attackPower,this.gameObject);
+            }
+        }
     }
 }

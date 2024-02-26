@@ -2581,7 +2581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02223c475ec8b7946bb47f7c676960f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 1000
   camera: {fileID: 1927445829}
   itemArea: {fileID: 536084408}
   gravity: 1000

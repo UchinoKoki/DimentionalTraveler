@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Enemyのステータスを管理するクラス
+/// Enemyのステータスを設定するクラス
 /// </summary>
 public class Enemy : BaseCharacter
 {
     public EnemyAsset enemyAsset;                   //敵のステータス
-    [SerializeField] protected BaseEnemyAI enemyAI;//敵のAI
+    [SerializeField] protected BaseEnemyAI enemyAI; //敵のAI
     private void Start()
     {
         //ステータスの設定

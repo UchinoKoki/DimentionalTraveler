@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敵がプレイヤーを見つけるためのトリガー
+/// </summary>
 public class BaseSearchTrigger : MonoBehaviour
 {
-    private GameObject target;       //ターゲット
-    public bool isTargetPlayer = true; //プレイヤーをターゲットにするか.機能として作るかもしれないのでpublic
+    private GameObject target;                                                      //ターゲット
+    public bool isTargetPlayer = true;                                              //プレイヤーをターゲットにするか.機能として作るかもしれないのでpublic
+    
+    //ターゲット
     [SerializeField]private List<GameObject> targetList = new List<GameObject>();   //ターゲットリスト
-    private GameObject nearTarget;                                  //一番近いターゲット
+    private GameObject nearTarget;                                                  //一番近いターゲット
 
-    private BaseEnemyAI baseEnemyAI;    //敵AI
+    private BaseEnemyAI baseEnemyAI;                                                //敵AI
     private void Start() {
         baseEnemyAI = transform.parent.GetComponent<BaseEnemyAI>();
     }
@@ -28,12 +33,12 @@ public class BaseSearchTrigger : MonoBehaviour
         if(targetList.Count == 0) return;
         nearTarget = targetList[0];
         foreach(var target in targetList){
+
             //ターゲットが既に死んでいたらリストから削除
             if(target == null){
                 targetList.Remove(target);
                 continue;
             }
-            Debug.Log($"TargetList: {targetList.Count}");
             //優先度の調査
             if (baseEnemyAI == null) baseEnemyAI = transform.parent.GetComponent<BaseEnemyAI>();    
             baseEnemyAI.CheckPriority(targetList);

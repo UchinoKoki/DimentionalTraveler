@@ -5,15 +5,15 @@ using UnityEngine.AI;
 
 public class BaseEnemyAI : MonoBehaviour
 {
-    //移動関連
     protected NavMeshAgent agent;
     protected GameObject targetObject;
+    [SerializeField]protected GameObject attackObject;
 
     protected float moveSpeed;
     protected float rotationSpeed;
     protected float attackRange;
     protected float attackSpeed;
-
+    protected int attackPower;
 
     protected float attackCoolTimer = 0;
     private Enemy enemy;
@@ -28,6 +28,7 @@ public class BaseEnemyAI : MonoBehaviour
         rotationSpeed = enemy.enemyAsset.rotationSpeed;
         attackRange = enemy.enemyAsset.attackRange;
         attackSpeed = enemy.enemyAsset.attackSpeed;
+        attackPower = enemy.enemyAsset.attack;
 
         //パラメータの設定
         agent.speed = moveSpeed;
@@ -36,7 +37,7 @@ public class BaseEnemyAI : MonoBehaviour
     }
     void FixedUpdate()
     {
-        //もしターゲットとの距離が射程内であり、クールタイマーが明けていれば攻撃
+        //距離で攻撃確認
         if(agent.remainingDistance < attackRange && attackCoolTimer <= 0)
         {
             //攻撃処理
@@ -66,5 +67,11 @@ public class BaseEnemyAI : MonoBehaviour
         //目的地の設定
         if(agent == null) agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(_pos);
+    }
+    public List<GameObject> GetTargetList()
+    {
+        //ターゲットリストの取得
+        BaseAttackAreaTrigger attackArea = attackObject.GetComponent<BaseAttackAreaTrigger>();
+        return attackArea.GetTargetList();
     }
 }

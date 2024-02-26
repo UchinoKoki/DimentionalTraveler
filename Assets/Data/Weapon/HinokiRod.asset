@@ -18,4 +18,4 @@ MonoBehaviour:
   AttackPower: 10
   AttackSpeed: 1
   AttackRange: 1
-  coolTime: 1
+  coolTime: 0.9
