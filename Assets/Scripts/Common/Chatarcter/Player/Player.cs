@@ -25,6 +25,11 @@ public class Player : BaseCharacter
     public float gravity = 9.8f;                //重力
     #endregion
 
+    #region 基本情報
+    public int maxBaseHP = 100;                    //最大体力
+    #endregion
+
+
     // Start is called before the first frame update
     void Start()
     {
