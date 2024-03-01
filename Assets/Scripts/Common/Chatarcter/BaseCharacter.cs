@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class BaseCharacter : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class BaseCharacter : MonoBehaviour
 
     public void Damage(int _damage,GameObject _attacker)
     {
+        Addressables.InstantiateAsync("Assets/Prefabs/DamageCanvas.prefab");
         hp -= _damage;
         if(hp <= 0)
         {
