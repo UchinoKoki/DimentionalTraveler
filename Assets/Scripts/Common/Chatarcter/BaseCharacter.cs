@@ -14,6 +14,9 @@ public class BaseCharacter : MonoBehaviour
     private GameObject damageCanvas;    //ダメージエフェクト
     [SerializeField] private UnityEvent damageEvent = new UnityEvent();    //ダメージを受けた時に呼び出すイベント
 
+    //OverRide先で多くの場合Startを使うため、Start使用時は注意
+
+    //ダメージを受けたときのエフェクトまた計算処理
     public void Damage(int _damage,GameObject _attacker)
     {
         //ダメージエフェクトの生成
@@ -28,7 +31,6 @@ public class BaseCharacter : MonoBehaviour
         damageEvent.Invoke();
         //TODO:UnityEventで敵キャラの場合赤くしたりできる？
         //TODO:カウンター装備とか作れる？
-        
 
         //体力の減少処理
         hp -= _damage;

@@ -11,11 +11,6 @@ public class CenterRay : MonoBehaviour
     /// カメラの中心からレイを飛ばし、その先の座標を返す
     /// </summary>
     /// <returns></returns>
-    /// 
-    void Start()
-    {
-        
-    }
     public Vector3 CastRayCenter()
     {
         Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, 0);

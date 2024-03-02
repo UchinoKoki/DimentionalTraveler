@@ -11,6 +11,7 @@ public class Player : BaseCharacter
 {
     [SerializeField] private GameObject  camera;     //プレイヤーのカメラ
     [SerializeField] private GameObject itemArea;    //アイテムを取得するエリア
+    [SerializeField] private GameObject interactGuideObject;    //インタラクトガイドのオブジェクト
     PlayerMove playerMove;                      //プレイヤーの移動を管理するクラス
     PlayerJump playerJump;                      //プレイヤーのジャンプを管理するクラス
     FootColliderObserver footColliderObserver;  //足元のコライダーの挙動を監視するクラス
@@ -19,6 +20,7 @@ public class Player : BaseCharacter
     WeaponController weaponController;          //武器のコントローラー
     GetWeapon getWeapon;                        //武器を取得するクラス
     PlayerAttack playerAttack;                  //プレイヤーの攻撃を管理するクラス
+    InteractGuide interactGuide;                //インタラクトガイドの挙動を管理するクラス
 
     #region 動き
     Rigidbody rb;                               //プレイヤーのRigidbody
@@ -42,6 +44,7 @@ public class Player : BaseCharacter
         getWeapon = itemArea.GetComponent<GetWeapon>();
         playerAttack = GetComponent<PlayerAttack>();
         centerRay = camera.GetComponent<CenterRay>();
+        interactGuide = interactGuideObject.GetComponent<InteractGuide>();
         rb = GetComponent<Rigidbody>();
 
         //カーソルをロック
@@ -61,6 +64,8 @@ public class Player : BaseCharacter
     {
         Gravity();
         SetAnim();
+        //インタラクトデータの表示
+        interactGuide.SetInteractText(GetInteractData());
     }
     /// <summary>
     /// プレイヤーの重力を設定する
@@ -170,5 +175,11 @@ public class Player : BaseCharacter
                 castItem.GetComponent<GateProgress>().isGateCharging = true;
             }
         }
+    }
+    private string GetInteractData()
+    {
+        GameObject castItem = centerRay.CastRayCenterObject();
+        if(castItem == null) return "";
+        return castItem.tag;
     }
 }

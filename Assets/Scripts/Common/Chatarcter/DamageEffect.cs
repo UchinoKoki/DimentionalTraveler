@@ -16,7 +16,7 @@ public class DamageEffect : MonoBehaviour
     {
         this.transform.DOMove(this.transform.position + new Vector3(0, 5, 0) + new Vector3(0, 1, 0), 0.5f).OnComplete(() =>
         {
-            // Addressables.Release(this.gameObject);
+            Addressables.Release(this.gameObject);
             Destroy(this.gameObject);
         });
     }

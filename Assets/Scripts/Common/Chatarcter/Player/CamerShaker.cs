@@ -11,6 +11,9 @@ public class CamerShaker : MonoBehaviour
     {
         cinemachineInpuleSource = GetComponent<CinemachineImpulseSource>();
     }
+    /// <summary>
+    /// カメラを揺らす
+    /// </summary>
     public void ShakeCamera()
     {
         cinemachineInpuleSource.GenerateImpulse();
