@@ -16,7 +16,12 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 1acaab763f7d07649b7253d1c0396e07
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 8d36c61b2c7bf2144b8d45d259f83be3
+    m_Address: Assets/Prefabs/DamageCanvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6ca81724f401d4046aae8eb772d7ec40, type: 2}
   m_SchemaSet:

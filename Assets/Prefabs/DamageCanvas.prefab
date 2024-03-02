@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3141072978710035888}
   - component: {fileID: 836251107363618494}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 1937952971465636379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.652654, y: 10, z: 10}
+  m_LocalScale: {x: -9.025583, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1372307111451525940}
@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 2588407282206687155}
   - component: {fileID: 5036712184034562720}
   - component: {fileID: 5197273593147513179}
+  - component: {fileID: 8603104688878252252}
   m_Layer: 5
   m_Name: DamageCanvas
   m_TagString: Untagged
@@ -221,7 +222,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5197273593147513179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,3 +240,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8603104688878252252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770047264763592365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4806f3eb53704fe46b4dbf8aaa07b2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
