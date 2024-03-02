@@ -11,6 +11,7 @@ public class Enemy : BaseCharacter
     [SerializeField] protected BaseEnemyAI enemyAI; //敵のAI
     private void Start()
     {
+        base.Start();
         //ステータスの設定
         hp = enemyAsset.hp;
         enemyAI = GetComponent<BaseEnemyAI>();

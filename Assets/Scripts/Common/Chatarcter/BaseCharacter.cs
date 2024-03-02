@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.Events;
@@ -11,22 +12,22 @@ using UnityEngine.Events;
 public class BaseCharacter : MonoBehaviour
 {
     public int hp;                      //体力
-    private GameObject damageCanvas;    //ダメージエフェクト
     [SerializeField] private UnityEvent damageEvent = new UnityEvent();    //ダメージを受けた時に呼び出すイベント
-
+    private AsyncOperationHandle<GameObject> damageCanvas;    //ダメージエフェクトのプレハブ
     //OverRide先で多くの場合Startを使うため、Start使用時は注意
+    protected async void Start()
+    {
+        damageCanvas = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/DamageCanvas.prefab");
+    }
 
     //ダメージを受けたときのエフェクトまた計算処理
-    public void Damage(int _damage,GameObject _attacker)
+    public async void Damage(int _damage,GameObject _attacker)
     {
-        //ダメージエフェクトの生成
-        Addressables.InstantiateAsync("Assets/Prefabs/DamageCanvas.prefab").Completed += (obj) =>
-        {
-            damageCanvas = obj.Result;
-            damageCanvas.transform.position = this.transform.position + new Vector3(0, 5, 0);
-            damageCanvas.transform.Find("DamageText").GetComponent<TextMeshProUGUI>().text = _damage.ToString();
-            damageCanvas.GetComponent<DamageEffect>().PlayEffect();
-        };
+        GameObject _loadedCanvas = await damageCanvas.Task;
+
+        GameObject _instantiatedCanvas = Instantiate(_loadedCanvas,this.transform.position + new Vector3(0, 5, 0),Quaternion.identity);
+        _instantiatedCanvas.transform.Find("DamageText").GetComponent<TextMeshProUGUI>().text = _damage.ToString();
+        _instantiatedCanvas.GetComponent<DamageEffect>().PlayEffect();
         //その他イベントの発火
         damageEvent.Invoke();
         //TODO:UnityEventで敵キャラの場合赤くしたりできる？

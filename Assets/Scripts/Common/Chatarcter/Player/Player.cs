@@ -35,6 +35,7 @@ public class Player : BaseCharacter
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         ///各クラスのコンポーネントを取得
         playerMove = GetComponent<PlayerMove>();
         footColliderObserver = GetComponent<FootColliderObserver>();
