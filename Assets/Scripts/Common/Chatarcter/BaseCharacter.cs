@@ -14,17 +14,20 @@ public class BaseCharacter : MonoBehaviour
     public int hp;                      //体力
     [SerializeField] private UnityEvent damageEvent = new UnityEvent();    //ダメージを受けた時に呼び出すイベント
     private AsyncOperationHandle<GameObject> damageCanvas;    //ダメージエフェクトのプレハブ
-    //OverRide先で多くの場合Startを使うため、Start使用時は注意
+
     protected async void Start()
     {
+        //ダメージエフェクトのプレハブを読み込む
         damageCanvas = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/DamageCanvas.prefab");
     }
 
     //ダメージを受けたときのエフェクトまた計算処理
     public async void Damage(int _damage,GameObject _attacker)
     {
-        GameObject _loadedCanvas = await damageCanvas.Task;
+        if(hp <= 0)return;//既に死んでいたら処理しない
 
+        //ダメージエフェクトの生成
+        GameObject _loadedCanvas = await damageCanvas.Task;
         GameObject _instantiatedCanvas = Instantiate(_loadedCanvas,this.transform.position + new Vector3(0, 5, 0),Quaternion.identity);
         _instantiatedCanvas.transform.Find("DamageText").GetComponent<TextMeshProUGUI>().text = _damage.ToString();
         _instantiatedCanvas.GetComponent<DamageEffect>().PlayEffect();

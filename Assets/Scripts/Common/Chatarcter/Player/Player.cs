@@ -97,7 +97,9 @@ public class Player : BaseCharacter
         //もしアイテムが武器の場合、武器を持ち変える
         if(getWeapon.GetWeaponObject() != null)
         {
+            //武器を取得
             GameObject nearObject = getWeapon.GetWeaponObject();
+            //武器を持ち変える
             weaponController.GetWeapon(nearObject);
             getWeapon.RemoveWeapon(nearObject);
         }

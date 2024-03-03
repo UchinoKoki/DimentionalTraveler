@@ -1588,7 +1588,7 @@ GameObject:
   - component: {fileID: 802029108}
   - component: {fileID: 802029107}
   m_Layer: 5
-  m_Name: InterctText
+  m_Name: InteractText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TextTextText
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3226,6 +3226,7 @@ MonoBehaviour:
         m_CallState: 2
   camera: {fileID: 1927445829}
   itemArea: {fileID: 536084408}
+  interactGuideObject: {fileID: 2132448355}
   gravity: 1000
   maxBaseHP: 100
 --- !u!54 &1510049066
@@ -4317,6 +4318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2132448356}
+  - component: {fileID: 2132448357}
   m_Layer: 5
   m_Name: InteractData
   m_TagString: Untagged
@@ -4344,6 +4346,19 @@ RectTransform:
   m_AnchoredPosition: {x: 323, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2132448357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132448355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d146b7495c89e44cb950d3093433384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactText: {fileID: 802029107}
 --- !u!4 &2140746720 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -839850360112612297, guid: f2f60913213b42840a43856e29455618,

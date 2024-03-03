@@ -16,18 +16,21 @@ public class CenterRay : MonoBehaviour
         Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = Camera.main.ScreenPointToRay(center);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100,layerMask))
+        if (Physics.Raycast(ray, out hit, 50,layerMask))
         {
             return hit.point;
         }
         return Vector3.zero;
     }
+    /// <summary>
+    /// カメラの中心からレイを飛ばし、その先のオブジェクトを返す
+    /// </summary>
     public GameObject CastRayCenterObject()
     {
         Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         Ray ray = Camera.main.ScreenPointToRay(center);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 50))
         {
             return hit.collider.gameObject;
         }
