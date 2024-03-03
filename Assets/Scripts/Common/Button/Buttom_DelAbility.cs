@@ -26,5 +26,6 @@ public class Buttom_DelAbility : MonoBehaviour
         keepAbilityData.Ability = noneAbility;
         this.gameObject.GetComponent<KeepAbilityData>().Ability = noneAbility;
         this.gameObject.GetComponent<Image>().sprite = noneAbility.abilityIcon;
+        this.gameObject.GetComponent<AbilityTextUpdater>().UpdateText("None","0");
     }
 }

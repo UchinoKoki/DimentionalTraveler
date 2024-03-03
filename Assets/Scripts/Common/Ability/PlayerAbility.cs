@@ -9,7 +9,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class PlayerAbility : MonoBehaviour
 {
     [SerializeField] private List<AbilityAsset> abilityList = new List<AbilityAsset>();
-    [SerializeField] private int abilityCost;
+    public int AbilityCost;
     [SerializeField] private GameObject nowAbilityParent;
 
     //アビリティがない場合のアビリティ
@@ -25,13 +25,13 @@ public class PlayerAbility : MonoBehaviour
     public void AddAbility(AbilityAsset ability)
     {
         //コストが足りない場合は追加しない
-        if(abilityCost < ability.useCost)
+        if(AbilityCost < ability.useCost)
         {
             Debug.Log("コストが足りません");
             return;
         }
         //コストを消費
-        abilityCost -= ability.useCost;
+        AbilityCost -= ability.useCost;
         //リストに追加
         abilityList.Add(ability);
         //データ保持スクリプトへデータを送る
@@ -41,17 +41,16 @@ public class PlayerAbility : MonoBehaviour
             {
                 item.Ability = ability;
                 item.gameObject.GetComponent<Image>().sprite = ability.abilityIcon;
+                item.gameObject.GetComponent<AbilityTextUpdater>().UpdateText(ability.abilityName,ability.useCost.ToString());
                 break;
             }
         }
     }
     public void RemoveAbility(AbilityAsset ability)
     {
-        Debug.Log("RemoveAbility");
         if(ability == null || ability == noneAbility)return;
         //コストを返却
-        abilityCost += ability.useCost;
-        Debug.Log("abilityCost:" + abilityCost);
+        AbilityCost += ability.useCost;
         //リストから削除
         for(int i = 0; i < nowAbilityParent.transform.childCount; i++)
         {
