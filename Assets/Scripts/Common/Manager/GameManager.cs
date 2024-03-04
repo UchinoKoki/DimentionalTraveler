@@ -49,6 +49,13 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             //初期ステージ数を設定
             stageNum = 0;
+            OverSceneData.instance.AbilityList = new List<AbilityAsset>();
+            OverSceneData.instance.WeaponList = new List<WeaponAsset>();
+            //要素数を指定したリセットができなかったためfor文で初期化
+            for(int i = 0; i < 3; i++)
+            {
+                OverSceneData.instance.WeaponList.Add(null);
+            }
         }
         else if(ThisSceneState.instance.sceneType == SceneType.BattleField)
         {

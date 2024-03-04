@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03947135ce75aab4c9251742d87a8b3b, type: 3}
-  m_Name: CommonWeapon
+  m_Script: {fileID: 11500000, guid: 9ec0b411890a8db48a15bb9afacffd8f, type: 3}
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  WeaponList:
-  - {fileID: 11400000, guid: 60d2023f3d229ff4480a7ac5ebf7c58a, type: 2}
-  - {fileID: 11400000, guid: 8a51b8650b4e414478dc508ab501801a, type: 2}
+  WeaponAssetObject: {fileID: 4090794491630565483, guid: 9a1a4caee324a514aad7cb0453914bcf,
+    type: 3}
+  WeaponName: Sword
+  AttackPower: 20
+  AttackSpeed: 1
+  AttackRange: 1
+  coolTime: 0.9

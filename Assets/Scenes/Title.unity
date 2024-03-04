@@ -2115,7 +2115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 229, y: 138}
+  m_AnchoredPosition: {x: 229, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &261061335
@@ -3139,7 +3139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &314522887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6073,7 +6073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &883852365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6176,6 +6176,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883852364}
   m_CullTransparentMesh: 1
+--- !u!1 &948163755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 948163757}
+  - component: {fileID: 948163756}
+  m_Layer: 0
+  m_Name: OverSceneData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &948163756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948163755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56460bb9fac159b4482c94bf6551d996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityList: []
+  AbilityCost: 0
+  WeaponList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nowTime: 0
+--- !u!4 &948163757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948163755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1516.2644, y: 510.4787, z: 49.576088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &966323376
 Mesh:
   m_ObjectHideFlags: 0
@@ -6370,6 +6421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e5003dd90fe4b439b4a2f5746f6db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageNum: 0
 --- !u!4 &1124131232
 Transform:
   m_ObjectHideFlags: 0
@@ -6716,6 +6768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Title
   sceneType: 1
+  nextSceneName: 
 --- !u!4 &1174435564
 Transform:
   m_ObjectHideFlags: 0
@@ -9359,7 +9412,7 @@ PrefabInstance:
     - target: {fileID: 3959629545418021647, guid: e83c7c33d56ae8a4498c4f88f9193f9d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7323886385983811540, guid: e83c7c33d56ae8a4498c4f88f9193f9d,
         type: 3}
@@ -9770,3 +9823,4 @@ SceneRoots:
   - {fileID: 429528509}
   - {fileID: 1174435564}
   - {fileID: 1124131232}
+  - {fileID: 948163757}
