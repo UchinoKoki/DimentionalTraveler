@@ -107,4 +107,14 @@ public class WeaponController : MonoBehaviour
             weaponObjectList[i].transform.parent = weaponAnchor[(nowWeaponSlot + i) % nowMaxWeaponSlot].transform;
         }
     }
+    public void InitializeWeaponSet(List<WeaponAsset> _weaponAssetList)
+    {
+        weaponAssetList = _weaponAssetList;
+        for(int i = 0; i < weaponAssetList.Count - 1; i++)
+        {
+            if(weaponAssetList[i] == null) continue;
+            weaponObjectList[i] = Instantiate(weaponAssetList[i].WeaponAssetObject, weaponAnchor[i].transform.position, weaponAnchor[i].transform.rotation, weaponAnchor[i].transform);
+        }
+        SetWeapon();
+    }
 }
