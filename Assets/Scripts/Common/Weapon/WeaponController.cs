@@ -33,6 +33,10 @@ public class WeaponController : MonoBehaviour
         leftWeaponAsset = _weaponObject.GetComponent<KeepWeaponData>().WeaponAsset;
         weaponAssetList[nowWeaponSlot] = leftWeaponAsset;
         weaponObjectList[nowWeaponSlot] = Instantiate(leftWeaponAsset.WeaponAssetObject, weaponAnchor[0].transform.position, weaponAnchor[0].transform.rotation, weaponAnchor[0].transform);
+
+        //武器をマネージャーへ保存
+        OverSceneData.instance.WeaponList = weaponAssetList;
+
         //取得したフィールド上オブジェクトの削除
         Destroy(_weaponObject);
     }

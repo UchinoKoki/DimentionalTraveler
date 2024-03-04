@@ -168,6 +168,10 @@ public class Player : BaseCharacter
     {
         return weaponController.GetHandWeapon();
     }
+
+    /// <summary>
+    /// インタラクトボタンが押されたときに呼び出される
+    /// </summary>
     public void OnInteract(InputAction.CallbackContext context)
     {
         if(context.started)
@@ -176,7 +180,7 @@ public class Player : BaseCharacter
             if(castItem == null) return;
             if(castItem.CompareTag("Gate"))
             {
-                castItem.GetComponent<GateProgress>().isGateCharging = true;
+                castItem.GetComponent<GateProgress>().Interact();
             }
         }
     }

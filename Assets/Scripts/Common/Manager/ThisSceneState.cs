@@ -5,8 +5,12 @@ using SceneState;
 
 public class ThisSceneState : MonoBehaviour
 {
+    //シーンの種類
     public string sceneName;
     public SceneType sceneType;
+
+    //次のシーンの行き先
+    public string nextSceneName;
 
     public static ThisSceneState instance;
 

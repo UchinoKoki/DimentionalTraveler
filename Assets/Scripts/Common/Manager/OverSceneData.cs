@@ -13,6 +13,9 @@ public class OverSceneData : MonoBehaviour
     public List<AbilityAsset> AbilityList = new List<AbilityAsset>();
     public int AbilityCost;
 
+    //プレイヤーの装備を保持
+    public List<WeaponAsset> WeaponList = new List<WeaponAsset>();
+
     //ステージ数を保持
     public int stageNum;
 
