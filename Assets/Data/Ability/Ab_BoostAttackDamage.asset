@@ -16,4 +16,5 @@ MonoBehaviour:
   abilityIcon: {fileID: 0}
   useSlotResource: 1
   useCost: 1
+  abilityValue: 10
   coolTime: 0

@@ -20,7 +20,16 @@ public class Button_GameStart : MonoBehaviour
         if (_isComplete)
         {
             FadeManager.instance.FadeOut(Fade.FadeType.Normal);
+            SendData();
             SceneManager.instance.LoadScene(sceneName);
         }
+    }
+
+    //データを保存するスクリプトへ送信する
+    public void SendData()
+    {
+        if(OverSceneData.instance == null) Debug.LogError("OverSceneData not find");
+        OverSceneData.instance.AbilityList = FindObjectOfType<PlayerAbility>().GetAbility();
+        OverSceneData.instance.AbilityCost = FindObjectOfType<PlayerAbility>().AbilityCost;
     }
 }

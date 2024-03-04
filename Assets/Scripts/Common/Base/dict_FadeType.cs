@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Fade{
     public enum FadeType
     {
-        Normal
+        Normal,
+        Stop
     }
 }

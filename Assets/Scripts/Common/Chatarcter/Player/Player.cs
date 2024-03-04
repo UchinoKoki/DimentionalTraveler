@@ -25,10 +25,13 @@ public class Player : BaseCharacter
     #region 動き
     Rigidbody rb;                               //プレイヤーのRigidbody
     public float gravity = 9.8f;                //重力
+    public bool canMove = true;
     #endregion
 
     #region 基本情報
-    public int maxBaseHP = 100;                    //最大体力
+    public int maxBaseHP = 100;                    //最大体力の基礎数値
+    public int abilityAddHP = 0;                   //アビリティによる体力の追加数値
+    public int maxHP;                              //最大体力
     #endregion
 
 
@@ -47,9 +50,7 @@ public class Player : BaseCharacter
         centerRay = camera.GetComponent<CenterRay>();
         interactGuide = interactGuideObject.GetComponent<InteractGuide>();
         rb = GetComponent<Rigidbody>();
-
-        //カーソルをロック
-        Cursor.lockState = CursorLockMode.Locked;
+        maxHP = maxBaseHP + abilityAddHP;    //最大体力
     }
 
     // Update is called once per frame
@@ -110,7 +111,7 @@ public class Player : BaseCharacter
     /// <param name="context"></param>
     public void OnMove(InputAction.CallbackContext context)
     {
-        playerMove.moveVelocity = context.ReadValue<Vector2>();
+        if(canMove)playerMove.moveVelocity = context.ReadValue<Vector2>();
     }
     public void OnDash(InputAction.CallbackContext context)
     {
@@ -184,5 +185,9 @@ public class Player : BaseCharacter
         GameObject castItem = centerRay.CastRayCenterObject();
         if(castItem == null) return "";
         return castItem.tag;
+    }
+    public void UpdateStatus()
+    {
+        maxHP = maxBaseHP + abilityAddHP;
     }
 }

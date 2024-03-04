@@ -45,7 +45,8 @@ public class BaseCharacter : MonoBehaviour
     }
     public void Dead()
     {
-        //死亡処理
-        gameObject.SetActive(false);
+        //死亡をゲームマネージャーに通知
+        if(gameObject.CompareTag("Player"))GameManager.instance.DeadPlayer(gameObject);
+        else gameObject.SetActive(false);
     }
 }

@@ -9,5 +9,6 @@ public class AbilityAsset : ScriptableObject {
     public Sprite abilityIcon;
     public int useSlotResource;
     public int useCost;
+    public int abilityValue;
     public float coolTime;
 }

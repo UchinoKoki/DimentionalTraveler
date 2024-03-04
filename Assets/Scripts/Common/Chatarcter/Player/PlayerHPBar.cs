@@ -17,6 +17,6 @@ public class PlayerHPBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        slider.value = (float)baseCharacter.hp / (float)player.maxBaseHP;
+        slider.value = (float)baseCharacter.hp / (float)player.maxHP;
     }
 }
