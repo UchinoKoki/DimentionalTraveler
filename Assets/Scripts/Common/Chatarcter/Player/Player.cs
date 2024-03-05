@@ -194,4 +194,8 @@ public class Player : BaseCharacter
     {
         maxHP = maxBaseHP + abilityAddHP;
     }
+    public void Heal(int _heal)
+    {
+        hp += _heal;
+    }
 }

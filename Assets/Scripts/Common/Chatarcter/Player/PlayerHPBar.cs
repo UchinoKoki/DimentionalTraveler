@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerHPBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-    [SerializeField] private BaseCharacter baseCharacter;
     [SerializeField] private Player player;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +16,6 @@ public class PlayerHPBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        slider.value = (float)baseCharacter.hp / (float)player.maxHP;
+        slider.value = (float)player.hp / (float)player.maxHP;
     }
 }

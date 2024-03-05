@@ -6,6 +6,11 @@ public partial   class EnhancementByAbility : MonoBehaviour
 {
     [SerializeField]private Player player;
 
+    void Start()
+    {
+        Enhancement();
+    }
+
     public void Enhancement()
     {
         int _addHP = 0;
@@ -36,6 +41,7 @@ public partial   class EnhancementByAbility : MonoBehaviour
 
         //アビリティの効果を加算
         player.abilityAddHP = _addHP;
+        player.Heal(_addHP);
 
         //TODO:追加攻撃力を加算
         //TODO:追加スピードを加算

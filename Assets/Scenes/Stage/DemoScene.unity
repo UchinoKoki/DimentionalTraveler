@@ -9326,7 +9326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 614019822}
-  baseCharacter: {fileID: 1510049065}
   player: {fileID: 1510049065}
 --- !u!1 &319568708
 GameObject:
@@ -26155,6 +26154,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverSceneData
       objectReference: {fileID: 0}
+    - target: {fileID: 6256304606027106645, guid: de231fccbf180d64db97d34405291703,
+        type: 3}
+      propertyPath: AbilityList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256304606027106645, guid: de231fccbf180d64db97d34405291703,
+        type: 3}
+      propertyPath: AbilityList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d0b6bdf5894c6c2479c0a0f8ba54cc21,
+        type: 2}
+    - target: {fileID: 6256304606027106645, guid: de231fccbf180d64db97d34405291703,
+        type: 3}
+      propertyPath: AbilityList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d0b6bdf5894c6c2479c0a0f8ba54cc21,
+        type: 2}
+    - target: {fileID: 6256304606027106645, guid: de231fccbf180d64db97d34405291703,
+        type: 3}
+      propertyPath: AbilityList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: d0b6bdf5894c6c2479c0a0f8ba54cc21,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
