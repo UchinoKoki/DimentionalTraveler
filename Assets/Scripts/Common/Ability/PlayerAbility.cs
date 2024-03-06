@@ -64,6 +64,7 @@ public class PlayerAbility : MonoBehaviour
             }
         }
     }
+    //アビリティのリストを取得
     public List<AbilityAsset> GetAbility()
     {
         return abilityList;
