@@ -16763,6 +16763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1510049059}
   - component: {fileID: 1510049065}
+  - component: {fileID: 1510049070}
   - component: {fileID: 1510049060}
   - component: {fileID: 1510049061}
   - component: {fileID: 1510049062}
@@ -16808,9 +16809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed29863c16763445986177a1b82374d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  moveVelocity: {x: 0, y: 0}
-  isDash: 0
 --- !u!114 &1510049061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16824,7 +16822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1510049058}
-  camera: {fileID: 1927445829}
+  playerCamera: {fileID: 1927445829}
 --- !u!114 &1510049062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16900,8 +16898,6 @@ MonoBehaviour:
   gravity: 1000
   canMove: 1
   maxBaseHP: 100
-  abilityAddHP: 0
-  maxHP: 0
 --- !u!54 &1510049066
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16983,6 +16979,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackArea: {fileID: 1371085942}
+--- !u!114 &1510049070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510049058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7167c5b4af09604588cb229c4abbbac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMoveSpeed: 50
+  baseDashSpeed: 100
 --- !u!1 &1528673697
 GameObject:
   m_ObjectHideFlags: 3

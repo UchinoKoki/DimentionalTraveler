@@ -12,6 +12,7 @@ public class Player : BaseCharacter
     [SerializeField] private GameObject itemArea;               //アイテムを取得するエリア
     [SerializeField] private GameObject interactGuideObject;    //インタラクトガイドのオブジェクト
 
+    private PlayerState playerState;                    //プレイヤーのステータスを管理するクラス
     private PlayerMove playerMove;                      //プレイヤーの移動を管理するクラス
     private PlayerJump playerJump;                      //プレイヤーのジャンプを管理するクラス
     private FootColliderObserver footColliderObserver;  //足元のコライダーの挙動を監視するクラス
@@ -31,7 +32,7 @@ public class Player : BaseCharacter
     #region 基本情報
     public int maxBaseHP = 100;                                          //最大体力の基礎数値
     [System.NonSerialized]public int abilityAddHP = 0;                   //アビリティによる体力の追加数値
-    public int maxHP;                                                    //最大体力
+    [System.NonSerialized]public int maxHP;                              //最大体力
     #endregion
 
 
@@ -40,6 +41,7 @@ public class Player : BaseCharacter
     {
         base.Start();
         ///各クラスのコンポーネントを取得
+        playerState = GetComponent<PlayerState>();
         playerMove = GetComponent<PlayerMove>();
         footColliderObserver = GetComponent<FootColliderObserver>();
         playerJump = GetComponent<PlayerJump>();
@@ -85,7 +87,7 @@ public class Player : BaseCharacter
     /// <param name="context"></param>
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(canMove)playerMove.moveVelocity = context.ReadValue<Vector2>();
+        if(canMove && playerMove != null)playerMove.moveVelocity = context.ReadValue<Vector2>();
     }
     public void OnDash(InputAction.CallbackContext context)
     {
@@ -159,10 +161,6 @@ public class Player : BaseCharacter
             {
                 castItem.GetComponent<GateProgress>().Interact();
             }
-            if(castItem.CompareTag("Item") || castItem.CompareTag("Weapon"))
-            {
-                GetAnyItem(castItem.tag);
-            }
         }
     }
     /// <summary>
@@ -176,9 +174,10 @@ public class Player : BaseCharacter
     /// アイテムを取得する
     /// </summary>
     /// <param name="context">InputAction/Interact</param>
-    public void GetAnyItem(string _tag)
+    public void GetAnyItem(InputAction.CallbackContext context)
     {
-        if (_tag == "Weapon")
+        //アイテムを取得する
+        if(context.started)
         {
             PickUpWeapon();
         }

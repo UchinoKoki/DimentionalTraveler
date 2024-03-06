@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject camera;
+    [SerializeField] private GameObject playerCamera;
 
     private void FixedUpdate() {
         RotateCharacter();
@@ -15,6 +15,6 @@ public class CameraController : MonoBehaviour
     /// キャラクターをカメラの向きに合わせて回転させる
     /// </summary>
     public void RotateCharacter(){
-        player.transform.eulerAngles = new Vector3(0,camera.transform.eulerAngles.y - 180,0);
+        player.transform.eulerAngles = new Vector3(0,playerCamera.transform.eulerAngles.y - 180,0);
     }
 }
