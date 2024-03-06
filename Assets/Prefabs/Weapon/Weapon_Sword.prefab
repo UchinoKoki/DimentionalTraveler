@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2997278715086566006}
   - component: {fileID: 3036073410490389515}
   - component: {fileID: 3635274096861008893}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,9 +119,9 @@ GameObject:
   - component: {fileID: 598050339913723205}
   - component: {fileID: 5172983261416751226}
   - component: {fileID: -6183431796030393819}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon_Sword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 902611820583924466}
   - component: {fileID: 985176290076048490}
   - component: {fileID: 172271767134721118}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

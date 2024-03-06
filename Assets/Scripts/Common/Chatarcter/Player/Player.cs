@@ -6,32 +6,32 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// プレイヤーの挙動を管理するクラス
 /// </summary>
-
 public class Player : BaseCharacter
 {
-    [SerializeField] private GameObject  camera;     //プレイヤーのカメラ
-    [SerializeField] private GameObject itemArea;    //アイテムを取得するエリア
+    [SerializeField] private GameObject  camera;                //プレイヤーのカメラ
+    [SerializeField] private GameObject itemArea;               //アイテムを取得するエリア
     [SerializeField] private GameObject interactGuideObject;    //インタラクトガイドのオブジェクト
-    PlayerMove playerMove;                      //プレイヤーの移動を管理するクラス
-    PlayerJump playerJump;                      //プレイヤーのジャンプを管理するクラス
-    FootColliderObserver footColliderObserver;  //足元のコライダーの挙動を監視するクラス
-    PlayerAnim playerAnim;                      //プレイヤーのアニメーションを管理するクラス
-    CenterRay centerRay;                        //カメラの中心からレイを飛ばすクラス
-    WeaponController weaponController;          //武器のコントローラー
-    GetWeapon getWeapon;                        //武器を取得するクラス
-    PlayerAttack playerAttack;                  //プレイヤーの攻撃を管理するクラス
-    InteractGuide interactGuide;                //インタラクトガイドの挙動を管理するクラス
+
+    private PlayerMove playerMove;                      //プレイヤーの移動を管理するクラス
+    private PlayerJump playerJump;                      //プレイヤーのジャンプを管理するクラス
+    private FootColliderObserver footColliderObserver;  //足元のコライダーの挙動を監視するクラス
+    private PlayerAnim playerAnim;                      //プレイヤーのアニメーションを管理するクラス
+    private CenterRay centerRay;                        //カメラの中心からレイを飛ばすクラス
+    private WeaponController weaponController;          //武器のコントローラー
+    private GetWeapon getWeapon;                        //武器を取得するクラス
+    private PlayerAttack playerAttack;                  //プレイヤーの攻撃を管理するクラス
+    private InteractGuide interactGuide;                //インタラクトガイドの挙動を管理するクラス
 
     #region 動き
-    Rigidbody rb;                               //プレイヤーのRigidbody
-    public float gravity = 9.8f;                //重力
+    private Rigidbody rb;                               //プレイヤーのRigidbody
+    public float gravity = 9.8f;                        //重力
     public bool canMove = true;
     #endregion
 
     #region 基本情報
-    public int maxBaseHP = 100;                    //最大体力の基礎数値
-    public int abilityAddHP = 0;                   //アビリティによる体力の追加数値
-    public int maxHP;                              //最大体力
+    public int maxBaseHP = 100;                                          //最大体力の基礎数値
+    [System.NonSerialized]public int abilityAddHP = 0;                   //アビリティによる体力の追加数値
+    public int maxHP;                                                    //最大体力
     #endregion
 
 
@@ -50,22 +50,15 @@ public class Player : BaseCharacter
         centerRay = camera.GetComponent<CenterRay>();
         interactGuide = interactGuideObject.GetComponent<InteractGuide>();
         rb = GetComponent<Rigidbody>();
-        maxHP = maxBaseHP + abilityAddHP;    //最大体力
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void ResetJumpCount()
-    {
-        playerJump.ResetCount();
+        //最大体力を計算
+        maxHP = maxBaseHP + abilityAddHP;    //最大体力
     }
     public void FixedUpdate()
     {
-        Gravity();
-        SetAnim();
+        Gravity();          //重力を追加
+        SetAnim();          //プレイヤーのアニメーションを更新設定
+
         //インタラクトデータの表示
         interactGuide.SetInteractText(GetInteractData());
     }
@@ -85,26 +78,7 @@ public class Player : BaseCharacter
         //プレイヤーのアニメーションを設定
         playerAnim.PlayAnim(Mathf.Clamp(Mathf.Abs(playerMove.GetMoveVelocity().x) + Mathf.Abs(playerMove.GetMoveVelocity().y),0,1), playerMove.GetMoveVelocity().x, playerMove.GetMoveVelocity().y, playerMove.isDash);
     }
-    public void GetAnyItem(InputAction.CallbackContext context)
-    {
-        //アイテムを取得する
-        if(context.started)
-        {
-            PickUpWeapon();
-        }
-    }
-    private void PickUpWeapon()
-    {
-        //もしアイテムが武器の場合、武器を持ち変える
-        if(getWeapon.GetWeaponObject() != null)
-        {
-            //武器を取得
-            GameObject nearObject = getWeapon.GetWeaponObject();
-            //武器を持ち変える
-            weaponController.GetWeapon(nearObject);
-            getWeapon.RemoveWeapon(nearObject);
-        }
-    }
+
     /// <summary>
     /// プレイヤーの移動処理
     /// </summary>
@@ -157,6 +131,9 @@ public class Player : BaseCharacter
             playerAnim.PlayerAttackAnim(false);
         }
     }
+    /// <summary>
+    /// スクロール入力
+    /// </summary>
     public void OnScroll(InputAction.CallbackContext context)
     {
         context.ReadValue<Vector2>();
@@ -182,8 +159,48 @@ public class Player : BaseCharacter
             {
                 castItem.GetComponent<GateProgress>().Interact();
             }
+            if(castItem.CompareTag("Item") || castItem.CompareTag("Weapon"))
+            {
+                GetAnyItem(castItem.tag);
+            }
         }
     }
+    /// <summary>
+    /// プレイヤーのジャンプ回数をリセットする
+    /// </summary>
+    public void ResetJumpCount()
+    {
+        playerJump.ResetCount();
+    }
+    /// <summary>
+    /// アイテムを取得する
+    /// </summary>
+    /// <param name="context">InputAction/Interact</param>
+    public void GetAnyItem(string _tag)
+    {
+        if (_tag == "Weapon")
+        {
+            PickUpWeapon();
+        }
+    }
+    /// <summary>
+    /// 落ちてる武器を拾う
+    /// </summary>
+    private void PickUpWeapon()
+    {
+        //もしアイテムが武器の場合、武器を持ち変える
+        if(getWeapon.GetWeaponObject() != null)
+        {
+            //武器を取得
+            GameObject nearObject = getWeapon.GetWeaponObject();
+            //武器を持ち変える
+            weaponController.GetWeapon(nearObject);
+            getWeapon.RemoveWeapon(nearObject);
+        }
+    }
+    /// <summary>
+    /// 当たったオブジェクトのタグを取得する
+    /// </summary>
     private string GetInteractData()
     {
         GameObject castItem = centerRay.CastRayCenterObject();
@@ -194,6 +211,8 @@ public class Player : BaseCharacter
     {
         maxHP = maxBaseHP + abilityAddHP;
     }
+
+    [System.Obsolete("BaseCharacterへ移行します。")]
     public void Heal(int _heal)
     {
         hp += _heal;
