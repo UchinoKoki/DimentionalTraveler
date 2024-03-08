@@ -13,7 +13,7 @@ public class BaseCharacter : MonoBehaviour
 {
     public int hp;                      //体力
     [SerializeField] private UnityEvent damageEvent = new UnityEvent();    //ダメージを受けた時に呼び出すイベント
-    private AsyncOperationHandle<GameObject> damageCanvas;    //ダメージエフェクトのプレハブ
+    private AsyncOperationHandle<GameObject> damageCanvas;                 //ダメージエフェクトのプレハブ
 
     protected async void Start()
     {
@@ -40,13 +40,17 @@ public class BaseCharacter : MonoBehaviour
         hp -= _damage;
         if(hp <= 0)
         {
-            Dead();
+            Dead(_attacker);
         }
     }
-    public void Dead()
+    public void Dead(GameObject _attacker)
     {
-        //死亡をゲームマネージャーに通知
+        //死亡処理
         if(gameObject.CompareTag("Player"))GameManager.instance.DeadPlayer(gameObject);
-        else gameObject.SetActive(false);
+        Destroy(this.gameObject);
+    }
+    public void Heal(int _heal)
+    {
+        hp += _heal;
     }
 }

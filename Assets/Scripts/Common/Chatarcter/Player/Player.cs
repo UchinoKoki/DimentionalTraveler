@@ -80,6 +80,22 @@ public class Player : BaseCharacter
         //プレイヤーのアニメーションを設定
         playerAnim.PlayAnim(Mathf.Clamp(Mathf.Abs(playerMove.GetMoveVelocity().x) + Mathf.Abs(playerMove.GetMoveVelocity().y),0,1), playerMove.GetMoveVelocity().x, playerMove.GetMoveVelocity().y, playerMove.isDash);
     }
+    /// <summary>
+    /// インタラクトボタンが押されたときに呼び出される
+    /// </summary>
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            GameObject castItem = centerRay.CastRayCenterObject();
+            if(castItem == null) return;
+            if (castItem.CompareTag("Gate"))
+            {
+                //ゲートにインタラクトする
+                castItem.GetComponent<GateProgress>().Interact();
+            }
+        }
+    }
 
     /// <summary>
     /// プレイヤーの移動処理
@@ -103,9 +119,7 @@ public class Player : BaseCharacter
     /// <summary>
     /// ジャンプボタンが押されたときに呼び出される
     /// </summary>
-    /// <param name="context">
-    /// InputSystemのコンテキスト
-    /// </param>
+    /// <param name="context"></param>
     public void OnJump(InputAction.CallbackContext context)
     {
         if(context.started){
@@ -117,16 +131,21 @@ public class Player : BaseCharacter
         }
     }
     /// <summary>
-    /// 攻撃入力があったときに呼び出される
+    /// 攻撃
+    /// 長押しで継続攻撃を実装するため、開始と終了でboolを切り替える
     /// </summary>
     public void OnAttack(InputAction.CallbackContext context)
     {
+        //手に持っている武器がない場合は攻撃しない
         if (GetHandWeapon() == null) return;
+
+        //攻撃ボタンが押されたとき
         if(context.started)
         {
             playerAttack.Attack(GetHandWeapon());
             playerAnim.PlayerAttackAnim(true);
         }
+        //攻撃ボタンが離されたとき
         if(context.canceled)
         {
             playerAttack.EndAttack();
@@ -140,6 +159,7 @@ public class Player : BaseCharacter
     {
         context.ReadValue<Vector2>();
         float scroll = context.ReadValue<Vector2>().y;
+        //武器を持ち変える
         weaponController.ChangeWeapon(scroll);
     }
     //手に持っている武器を取得
@@ -148,21 +168,6 @@ public class Player : BaseCharacter
         return weaponController.GetHandWeapon();
     }
 
-    /// <summary>
-    /// インタラクトボタンが押されたときに呼び出される
-    /// </summary>
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        if(context.started)
-        {
-            GameObject castItem = centerRay.CastRayCenterObject();
-            if(castItem == null) return;
-            if(castItem.CompareTag("Gate"))
-            {
-                castItem.GetComponent<GateProgress>().Interact();
-            }
-        }
-    }
     /// <summary>
     /// プレイヤーのジャンプ回数をリセットする
     /// </summary>
@@ -209,11 +214,5 @@ public class Player : BaseCharacter
     public void UpdateStatus()
     {
         maxHP = maxBaseHP + abilityAddHP;
-    }
-
-    [System.Obsolete("BaseCharacterへ移行します。")]
-    public void Heal(int _heal)
-    {
-        hp += _heal;
     }
 }

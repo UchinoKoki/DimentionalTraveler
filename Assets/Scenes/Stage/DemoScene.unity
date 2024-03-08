@@ -16524,7 +16524,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1510049065}
-  hitList: []
 --- !u!1 &1421513404
 GameObject:
   m_ObjectHideFlags: 0
@@ -16992,7 +16991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMoveSpeed: 50
-  baseDashSpeed: 100
+  baseDashSpeed: 60
 --- !u!1 &1528673697
 GameObject:
   m_ObjectHideFlags: 3
@@ -26046,6 +26045,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4972707403564676306, guid: 6ebf59a46a1c3db44afdc9002a707fed,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1510049065}
     - target: {fileID: 7937461648585126040, guid: 6ebf59a46a1c3db44afdc9002a707fed,
         type: 3}
       propertyPath: m_LocalPosition.x

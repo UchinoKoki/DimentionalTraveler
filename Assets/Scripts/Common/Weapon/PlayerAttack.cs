@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     private float attackCoolTimer = 0;  //攻撃のクールタイム
     private GameObject weaponObject;    //武器のオブジェクト
 
-    [SerializeField] private PlayerMeleeAttackArea attackArea;  //攻撃範囲
+    public PlayerMeleeAttackArea attackArea;  //攻撃範囲
 
     /// <summary>
     /// 攻撃ボタンが押された時の処理
@@ -35,11 +35,10 @@ public class PlayerAttack : MonoBehaviour
         if(attackCoolTimer > 0) attackCoolTimer -= Time.deltaTime;
 
         //攻撃が押されているか確認
-        if(!attack) return;             //攻撃が押されていない場合は処理を抜ける                                    
-        if (attackCoolTimer > 0) return;//クールダウン中は処理を抜ける
+        if(!attack) return;                     //攻撃が押されていない場合は処理を抜ける                                    
+        if (attackCoolTimer > 0) return;        //クールダウン中は処理を抜ける
         weapon = weaponObject.GetComponentInChildren<BaseWeapon>();
-        if (weapon == null) return; //武器がない場合は処理を抜ける
-        StartAttack();
+        if (weapon != null) StartAttack();
     }
 
     private void StartAttack()
@@ -48,6 +47,5 @@ public class PlayerAttack : MonoBehaviour
         weapon.SetEnemyList(attackArea.GetEnemyList());
         weapon.Attack();
         attackCoolTimer = weapon.GetCoolTime();
-        Debug.Log("PlayerAttack Attack");
     }
 }

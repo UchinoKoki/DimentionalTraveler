@@ -100,8 +100,9 @@ public class WeaponController : MonoBehaviour
         leftWeaponAsset = weaponAssetList[nowWeaponSlot];
         for(int i = 0; i < weaponObjectList.Count; i++)
         {
+            //武器がない場合は処理しない
             if(weaponObjectList[i] == null) continue;
-            Debug.Log($"{(nowWeaponSlot + i) % nowMaxWeaponSlot}");
+            //武器のセット
             weaponObjectList[i].transform.position = weaponAnchor[(nowWeaponSlot + i) % nowMaxWeaponSlot].transform.position;
             weaponObjectList[i].transform.rotation = weaponAnchor[(nowWeaponSlot + i) % nowMaxWeaponSlot].transform.rotation;
             weaponObjectList[i].transform.parent = weaponAnchor[(nowWeaponSlot + i) % nowMaxWeaponSlot].transform;

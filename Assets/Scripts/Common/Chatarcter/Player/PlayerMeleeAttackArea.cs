@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMeleeAttackArea : MonoBehaviour
 {
     public Player player;
-    public List<Enemy> hitList = new List<Enemy>();
+    private List<Enemy> hitList = new List<Enemy>();
     
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +23,11 @@ public class PlayerMeleeAttackArea : MonoBehaviour
     }
     public List<Enemy> GetEnemyList()
     {
+        DeleteNullToList();
         return hitList;
+    }
+    private void DeleteNullToList()
+    {
+        hitList.RemoveAll(enemy => enemy == null);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial   class EnhancementByAbility : MonoBehaviour
+public partial  class EnhancementByAbility : MonoBehaviour
 {
     [SerializeField]private Player player;
 
@@ -20,21 +20,17 @@ public partial   class EnhancementByAbility : MonoBehaviour
         //アビリティの効果を取得
         foreach(var ability in OverSceneData.instance.AbilityList)
         {
-            Debug.Log(ability.abilityName);
             if(ability == null) continue;
             if(ability.abilityName == "BoostHP")
             {
-                Debug.Log("BoostHP");
                 _addHP += ability.abilityValue;
             }
             if(ability.abilityName == "BoostAttack")
             {
-                Debug.Log("BoostAttack");
                 _addAttack += ability.abilityValue;
             }
             if(ability.abilityName == "BoostSpeed")
             {
-                Debug.Log("BoostSpeed");
                 _addSpeed += ability.abilityValue;
             }
         }

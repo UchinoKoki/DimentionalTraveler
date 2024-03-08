@@ -23,7 +23,6 @@ public class BaseWeapon : MonoBehaviour
     public void SetEnemyList(List<Enemy> _list)
     {
         enemyList = _list;
-        Debug.Log($"SetEnemyList{enemyList.Count}");
     }
     /// <summary>
     /// 攻撃対象の敵リストから削除する
