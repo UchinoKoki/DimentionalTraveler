@@ -25891,6 +25891,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemPopPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 6052844741957171715, guid: 40bbd00e8a9f4b3418577849c54af22e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
