@@ -10,6 +10,8 @@ public class PlayerState : MonoBehaviour
     [SerializeField]private float baseDashSpeed = 1.5f;            //ダッシュ時の基本追加速度
     [System.NonSerialized]public float addDashSpeed = 0f;          //ダッシュ時の追加速度
 
+    public int chooseAbilityNum = 3;              //プレイヤーがアビリティアイテム獲得時に提示されるアイテム数
+
     /// <summary>
     /// プレイヤーの合計移動速度を取得
     /// </summary>

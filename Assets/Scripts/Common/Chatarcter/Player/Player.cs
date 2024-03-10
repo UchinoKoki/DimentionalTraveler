@@ -94,9 +94,13 @@ public class Player : BaseCharacter
                 //ゲートにインタラクトする
                 castItem.GetComponent<GateProgress>().Interact();
             }
+            if(castItem.CompareTag("Ability"))
+            {
+                //アビリティアイテムを取得する
+                castItem.GetComponent<AbilityItem>().GetAbilityItem(playerState.chooseAbilityNum, this);
+            }
         }
     }
-
     /// <summary>
     /// プレイヤーの移動処理
     /// </summary>
@@ -105,6 +109,10 @@ public class Player : BaseCharacter
     {
         if(canMove && playerMove != null)playerMove.moveVelocity = context.ReadValue<Vector2>();
     }
+    /// <summary>
+    /// プレイヤーのダッシュ処理
+    /// </summary>
+    /// <param name="context"></param>
     public void OnDash(InputAction.CallbackContext context)
     {
         if(context.started)
@@ -117,7 +125,7 @@ public class Player : BaseCharacter
         }
     }
     /// <summary>
-    /// ジャンプボタンが押されたときに呼び出される
+    /// ジャンプ処理
     /// </summary>
     /// <param name="context"></param>
     public void OnJump(InputAction.CallbackContext context)
@@ -211,6 +219,9 @@ public class Player : BaseCharacter
         if(castItem == null) return "";
         return castItem.tag;
     }
+    /// <summary>
+    /// プレイヤーのステータスを更新する
+    /// </summary>
     public void UpdateStatus()
     {
         maxHP = maxBaseHP + abilityAddHP;
