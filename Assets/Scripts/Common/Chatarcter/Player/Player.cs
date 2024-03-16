@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 /// <summary>
 /// プレイヤーの挙動を管理するクラス
@@ -33,6 +34,15 @@ public class Player : BaseCharacter
     public int maxBaseHP = 100;                                          //最大体力の基礎数値
     [System.NonSerialized]public int abilityAddHP = 0;                   //アビリティによる体力の追加数値
     [System.NonSerialized]public int maxHP;                              //最大体力
+    #endregion
+
+    #region チュートリアル
+    [SerializeField] private bool isTutorial = false;                    //チュートリアルかどうか
+    #endregion
+
+    #region イベント
+    public UnityEvent GetWeaponEvent;
+    public UnityEvent AttackEvent;
     #endregion
 
 
@@ -152,6 +162,7 @@ public class Player : BaseCharacter
         {
             playerAttack.Attack(GetHandWeapon());
             playerAnim.PlayerAttackAnim(true);
+            if (isTutorial) AttackEvent.Invoke();
         }
         //攻撃ボタンが離されたとき
         if(context.canceled)
@@ -208,6 +219,8 @@ public class Player : BaseCharacter
             //武器を持ち変える
             weaponController.GetWeapon(nearObject);
             getWeapon.RemoveWeapon(nearObject);
+
+            if(isTutorial) GetWeaponEvent.Invoke();
         }
     }
     /// <summary>

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fade;
+using UnityEngine.Events;
 
 public class GateProgress : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class GateProgress : MonoBehaviour
 
     //ゲートのチャージゲージ管理
     [SerializeField] private UI_GateGauge gateGauge;
+
+    //その他イベント管理
+    [SerializeField] private UnityEvent startChargeEvent;
+    [SerializeField] private UnityEvent endChargeEvent;
+    [SerializeField] private UnityEvent nextStageEvent;
 
     void Start()
     {
@@ -62,6 +68,9 @@ public class GateProgress : MonoBehaviour
                 outsideParticle.Stop();
                 insideParticle.Stop();
                 gateGauge.gameObject.SetActive(false);
+                
+                //その他イベントの発火
+                endChargeEvent.Invoke();
             }
         }
         else
@@ -70,6 +79,7 @@ public class GateProgress : MonoBehaviour
             if(gateCharge > 0)
             {
                 //チャージの減衰
+                //TODO:エリア外だとそもそもOnTriggerEnterが発火しないので減少してない
                 gateCharge -= gateChargeSpeed * 0.8f;
             }
         }
@@ -80,6 +90,8 @@ public class GateProgress : MonoBehaviour
     {
         if(isGateOpen)
         {
+            //イベント発火
+            nextStageEvent.Invoke();
             //ゲートを通過する処理
             FadeManager.instance.FadeOut(Fade.FadeType.Normal);
             SceneManager.instance.LoadScene(ThisSceneState.instance.nextSceneName);
@@ -91,6 +103,9 @@ public class GateProgress : MonoBehaviour
             outsideParticle.Play();
             insideParticle.Play();
             gateGauge.gameObject.SetActive(true);
+
+            //その他イベントの発火
+            startChargeEvent.Invoke();
         }
     }
 }
