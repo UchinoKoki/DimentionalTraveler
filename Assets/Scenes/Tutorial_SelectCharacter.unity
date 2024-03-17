@@ -1952,7 +1952,8 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 8300000, guid: ea859953e12607247894f43f257f796b,
+            type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2011,7 +2012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   observeObjectList:
   - {fileID: 942255398}
-  sceneName: DemoScene
+  sceneName: TutorialStage
 --- !u!114 &589203089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8145,7 +8146,7 @@ PrefabInstance:
         type: 3}
       propertyPath: seAudioSourceList.Array.data[0]
       value: 
-      objectReference: {fileID: 1694148059}
+      objectReference: {fileID: 1000875009}
     - target: {fileID: 7339014903555166112, guid: 0b54c53564a75294fa3d061a341b1cab,
         type: 3}
       propertyPath: bgmAudioSourceList.Array.data[0]

@@ -4125,6 +4125,11 @@ PrefabInstance:
       propertyPath: seAudioSourceList.Array.data[0]
       value: 
       objectReference: {fileID: 141916631}
+    - target: {fileID: 7339014903555166112, guid: 0b54c53564a75294fa3d061a341b1cab,
+        type: 3}
+      propertyPath: bgmAudioSourceList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1694148059}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

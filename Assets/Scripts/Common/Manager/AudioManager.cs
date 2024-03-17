@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!audioPanel == null) return;
+        if (audioPanel == null) return;
         if(!audioPanel.activeSelf) return;
         foreach(AudioSource bgmAudioSource in bgmAudioSourceList)
         {
