@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int stageNum = 0;
     private string resultName = "Result";
 
+    public List<float> volumeList = new List<float>();//0:Master,1:BGM,2:SE
+    
     void Awake()
     {
         if(instance == null)
