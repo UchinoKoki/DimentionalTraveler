@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: 
   hp: 50
-  attack: 1
+  attack: 10
   enemyObject: {fileID: 1971290105464503483, guid: 4b5d8e2cb0e3f404cbb7253b85e89abd,
     type: 3}
   moveSpeed: 5
