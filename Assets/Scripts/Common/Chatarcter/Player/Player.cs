@@ -66,6 +66,7 @@ public class Player : BaseCharacter
         //最大体力を計算
         maxHP = maxBaseHP + abilityAddHP;    //最大体力
     }
+    
     public void FixedUpdate()
     {
         Gravity();          //重力を追加

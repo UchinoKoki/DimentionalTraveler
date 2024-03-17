@@ -9,6 +9,7 @@ public class TutorialGameSceneTab : MonoBehaviour
     [SerializeField] private GameObject tutorialWindow;
 
     [SerializeField] private TutorialGameSceneTab nextTutorial;
+    [SerializeField] private List<TutorialGameSceneTab> beforTutorial = new List<TutorialGameSceneTab>();
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,7 @@ public class TutorialGameSceneTab : MonoBehaviour
     /// <param name="index">チェックマークのインデックス</param>
     public void SetMark(int index)
     {
+        if(this.gameObject.activeSelf == false) return;
         checkMarkList[index].SetActive(true);
 
         //もし全てクリアしたらウィンドウを非表示にする
