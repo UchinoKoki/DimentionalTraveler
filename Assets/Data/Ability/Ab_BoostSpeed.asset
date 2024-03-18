@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ab_BoostSpeed
   m_EditorClassIdentifier: 
   abilityName: BoostSpeed
-  abilityIcon: {fileID: 0}
+  abilityIcon: {fileID: 21300000, guid: c4e401b3aa1631743af7adc2cf8541ae, type: 3}
   useSlotResource: 1
   useCost: 1
-  abilityValue: 1
+  abilityValue: 10
   coolTime: 0

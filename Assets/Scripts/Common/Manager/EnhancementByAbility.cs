@@ -5,6 +5,7 @@ using UnityEngine;
 public partial  class EnhancementByAbility : MonoBehaviour
 {
     [SerializeField]private Player player;
+    [SerializeField]private PlayerState playerState;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public partial  class EnhancementByAbility : MonoBehaviour
         //アビリティの効果を取得
         foreach(var ability in OverSceneData.instance.AbilityList)
         {
+            Debug.Log(ability.abilityName);
             if(ability == null) continue;
             if(ability.abilityName == "BoostHP")
             {
@@ -38,6 +40,8 @@ public partial  class EnhancementByAbility : MonoBehaviour
         //アビリティの効果を加算
         player.abilityAddHP = _addHP;
         player.Heal(_addHP);
+
+        playerState.addMoveSpeed = _addSpeed;
 
         //TODO:追加攻撃力を加算
         //TODO:追加スピードを加算

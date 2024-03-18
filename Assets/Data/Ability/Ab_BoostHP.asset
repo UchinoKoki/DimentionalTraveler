@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ab_BoostHP
   m_EditorClassIdentifier: 
   abilityName: BoostHP
-  abilityIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  abilityIcon: {fileID: 21300000, guid: 6296551df5ea0a943ad85a49f0a251ea, type: 3}
   useSlotResource: 1
   useCost: 1
   abilityValue: 50

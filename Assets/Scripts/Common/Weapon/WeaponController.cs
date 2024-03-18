@@ -46,7 +46,8 @@ public class WeaponController : MonoBehaviour
     private void DropWeapon(Vector3 _beforItemPosition)
     {
         if (leftWeaponAsset == null) return;
-        Instantiate(leftWeaponAsset.WeaponAssetObject, _beforItemPosition, transform.rotation);
+        // Instantiate(leftWeaponAsset.WeaponAssetObject, _beforItemPosition, transform.rotation);
+        Destroy(weaponObjectList[nowWeaponSlot]);
     }
     /// <summary>
     /// 手に持っている武器を返す
