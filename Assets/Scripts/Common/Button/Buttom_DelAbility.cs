@@ -12,12 +12,11 @@ public class Buttom_DelAbility : MonoBehaviour
 
     //アビリティがない場合のアビリティ
     private AsyncOperationHandle<AbilityAsset> handle;
-    private AbilityAsset noneAbility;
+    [SerializeField] private AbilityAsset noneAbility;
     
     async void Start()
     {
-        handle = Addressables.LoadAssetAsync<AbilityAsset>("Assets/Data/Ability/Ab_None.asset");
-        noneAbility = await handle.Task;
+
     }
 
     public void DelAbility(PlayerAbility playerAbility)

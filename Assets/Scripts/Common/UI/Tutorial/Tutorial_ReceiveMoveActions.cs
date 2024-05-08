@@ -26,11 +26,11 @@ public class Tutorial_ReceiveMoveActions : MonoBehaviour
         }
         if(context.ReadValue<Vector2>().y < 0)
         {
-            tutorialGameSceneTab.SetMark(1);
+            tutorialGameSceneTab.SetMark(2);
         }
         if(context.ReadValue<Vector2>().x < 0)
         {
-            tutorialGameSceneTab.SetMark(2);
+            tutorialGameSceneTab.SetMark(1);
         }
         if(context.ReadValue<Vector2>().x > 0)
         {

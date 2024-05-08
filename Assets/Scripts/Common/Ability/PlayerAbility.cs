@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.Events;
 
 //プレイヤーのアビリティを管理するクラス
 public class PlayerAbility : MonoBehaviour
@@ -11,15 +12,18 @@ public class PlayerAbility : MonoBehaviour
     [SerializeField] private List<AbilityAsset> abilityList = new List<AbilityAsset>();
     public int AbilityCost;
     [SerializeField] private GameObject nowAbilityParent;
+    [SerializeField] private List<KeepAbilityData> keepAbilityDataList = new List<KeepAbilityData>();
 
     //アビリティがない場合のアビリティ
     private AsyncOperationHandle<AbilityAsset> handle;
-    private AbilityAsset noneAbility;
+    [SerializeField] private AbilityAsset noneAbility;
+
+    [SerializeField] private UnityEvent instantiateList = new UnityEvent();
     
-    async void Start()
+    void Start()
     {
-        handle = Addressables.LoadAssetAsync<AbilityAsset>("Assets/Data/Ability/Ab_None.asset");
-        noneAbility = await handle.Task;
+        //初期化
+        instantiateList.Invoke();
     }
 
     public void AddAbility(AbilityAsset ability)
@@ -35,8 +39,10 @@ public class PlayerAbility : MonoBehaviour
         //リストに追加
         abilityList.Add(ability);
         //データ保持スクリプトへデータを送る
-        foreach (var item in nowAbilityParent.GetComponentsInChildren<KeepAbilityData>())
+        Debug.Log("アビリティの追加を開始します");
+        foreach (var item in keepAbilityDataList)
         {
+            Debug.Log("アビリティを追加します");
             if(item.Ability == null || item.Ability == noneAbility)
             {
                 item.Ability = ability;

@@ -24,10 +24,12 @@ public class ThisSceneState : MonoBehaviour
         {
             Destroy(this);
         }
+
+        GameManager.instance.Load();
     }
 
     void Start()
     {
-        GameManager.instance.Load();
+        
     }
 }
