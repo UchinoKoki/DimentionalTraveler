@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.amazonaws.gamelift": "file:C:/Users/内野　航希/Downloads/amazon-gamelift-plugin-unity-release-2.1.0/com.amazonaws.gamelift-2.1.0.tgz",
+    "com.amazonaws.gameliftserver.sdk": "file:C:/Users/内野　航希/Downloads/GameLift-CSharp-ServerSDK-UnityPlugin-5.1.2/com.amazonaws.gameliftserver.sdk-5.1.2.tgz",
     "com.unity.addressables": "1.21.20",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.cinemachine": "2.9.7",
@@ -46,5 +48,14 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "Unity NuGet",
+      "url": "https://unitynuget-registry.azurewebsites.net",
+      "scopes": [
+        "org.nuget"
+      ]
+    }
+  ]
 }

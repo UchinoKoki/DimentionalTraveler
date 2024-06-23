@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         //シーンロード時の初期化処理
         if(ThisSceneState.instance.sceneType == SceneType.Title)
         {
+            Application.targetFrameRate = 24;
             //タイトルシーンの初期化処理
             //カーソルを解放
             Cursor.lockState = CursorLockMode.None;
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         }
         else if(ThisSceneState.instance.sceneType == SceneType.BattleField)
         {
+            Application.targetFrameRate = 60;
             Debug.Log("BattleField");
             //バトルフィールドシーンの初期化処理
             //ステージ数を進める
@@ -71,16 +73,18 @@ public class GameManager : MonoBehaviour
             //アビリティの設定
             
             //カーソルをロック
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.None;
         }
         else if(ThisSceneState.instance.sceneType == SceneType.SelectAbility)
         {
+            Application.targetFrameRate = 30;
             //アビリティ選択シーンの初期化処理
             //カーソルを解放
             Cursor.lockState = CursorLockMode.None;
         }
         else if(ThisSceneState.instance.sceneType == SceneType.Result)
         {
+            Application.targetFrameRate = 24;
             //リザルトシーンの初期化処理
             //カーソルを解放
             Cursor.lockState = CursorLockMode.None;

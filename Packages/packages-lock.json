@@ -1,5 +1,25 @@
 {
   "dependencies": {
+    "com.amazonaws.gamelift": {
+      "version": "file:C:/Users/内野　航希/Downloads/amazon-gamelift-plugin-unity-release-2.1.0/com.amazonaws.gamelift-2.1.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.0"
+      }
+    },
+    "com.amazonaws.gameliftserver.sdk": {
+      "version": "file:C:/Users/内野　航希/Downloads/GameLift-CSharp-ServerSDK-UnityPlugin-5.1.2/com.amazonaws.gameliftserver.sdk-5.1.2.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "org.nuget.log4net": "2.0.15",
+        "org.nuget.polly": "7.2.3",
+        "org.nuget.websocketsharp.core": "1.0.0",
+        "org.nuget.system.configuration.configurationmanager": "7.0.0"
+      }
+    },
     "com.unity.addressables": {
       "version": "1.21.20",
       "depth": 0,
@@ -91,6 +111,13 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.6",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -209,6 +236,71 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "org.nuget.log4net": {
+      "version": "2.0.15",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "org.nuget.system.configuration.configurationmanager": "4.5.0"
+      },
+      "url": "https://unitynuget-registry.azurewebsites.net"
+    },
+    "org.nuget.polly": {
+      "version": "7.2.3",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unitynuget-registry.azurewebsites.net"
+    },
+    "org.nuget.system.configuration.configurationmanager": {
+      "version": "7.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "org.nuget.system.security.cryptography.protecteddata": "7.0.0",
+        "org.nuget.system.security.permissions": "7.0.0"
+      },
+      "url": "https://unitynuget-registry.azurewebsites.net"
+    },
+    "org.nuget.system.security.accesscontrol": {
+      "version": "6.0.0",
+      "depth": 3,
+      "source": "registry",
+      "dependencies": {
+        "org.nuget.system.security.principal.windows": "5.0.0"
+      },
+      "url": "https://unitynuget-registry.azurewebsites.net"
+    },
+    "org.nuget.system.security.cryptography.protecteddata": {
+      "version": "7.0.0",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unitynuget-registry.azurewebsites.net"
+    },
+    "org.nuget.system.security.permissions": {
+      "version": "7.0.0",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {
+        "org.nuget.system.security.accesscontrol": "6.0.0"
+      },
+      "url": "https://unitynuget-registry.azurewebsites.net"
+    },
+    "org.nuget.system.security.principal.windows": {
+      "version": "5.0.0",
+      "depth": 4,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unitynuget-registry.azurewebsites.net"
+    },
+    "org.nuget.websocketsharp.core": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unitynuget-registry.azurewebsites.net"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

@@ -10,6 +10,9 @@ public class PlayerMove : MonoBehaviour
     [System.NonSerialized]public Vector2 moveVelocity;  //プレイヤーの移動方向
     [System.NonSerialized]public bool isDash = false;   //ダッシュ中かどうか
 
+    public bool isMultiPlay = false;                    //マルチプレイ中かどうか
+    public bool isOwner = false;                         //オーナーかどうか
+
     private Rigidbody rb;                                   //プレイヤーのRigidbody
     private PlayerState playerState;                        //プレイヤーのステータスを管理するクラス
     // Start is called before the first frame update
@@ -40,15 +43,18 @@ public class PlayerMove : MonoBehaviour
     }
     private void Move()
     {
-        if (isDash && GetMoveVelocity().y >= 0.9f && GetMoveVelocity().x <= 0.1)
+        if (isOwner)
         {
-            actualSpeed = playerState.moveSpeed() + playerState.dashSpeed();
+            if (isDash && GetMoveVelocity().y >= 0.9f && GetMoveVelocity().x <= 0.1)
+            {
+                actualSpeed = playerState.moveSpeed() + playerState.dashSpeed();
+            }
+            else
+            {
+                actualSpeed = playerState.moveSpeed();
+            }
+            rb.velocity = transform.TransformDirection(-moveVelocity.x * actualSpeed, 0f, -moveVelocity.y * actualSpeed);
         }
-        else
-        {
-            actualSpeed = playerState.moveSpeed();
-        }
-        rb.velocity = transform.TransformDirection(-moveVelocity.x* actualSpeed,0f,-moveVelocity.y* actualSpeed);
     }
 
 }

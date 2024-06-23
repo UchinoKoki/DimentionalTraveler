@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Result.unity
     guid: 5c291790f9df3be458ec5597e17c43ee
+  - enabled: 1
+    path: Assets/Scenes/Stage/DemoMultiScene.unity
+    guid: 3aed9e87e14c8ae4dbaca83881e4175e
+  - enabled: 1
+    path: Assets/Scenes/SelectMultiCharacter.unity
+    guid: 5b8470d25a8c4dc489a167b8038e80bf
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: b3d62e19b1889d244800acf35cf4a91d,
       type: 2}

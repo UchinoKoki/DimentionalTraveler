@@ -7616,13 +7616,14 @@ GameObject:
   - component: {fileID: 883852368}
   - component: {fileID: 883852367}
   - component: {fileID: 883852366}
+  - component: {fileID: 883852369}
   m_Layer: 5
   m_Name: Button_Multi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &883852365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7638,9 +7639,9 @@ RectTransform:
   - {fileID: 518570884}
   m_Father: {fileID: 1470317693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -255}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &883852366
@@ -7686,7 +7687,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 883852367}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 883852369}
+        m_TargetAssemblyTypeName: Button_SceneChange, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1654889311}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: ea859953e12607247894f43f257f796b,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &883852367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7725,6 +7751,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883852364}
   m_CullTransparentMesh: 1
+--- !u!114 &883852369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883852364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd660f34b94ed4548ba5a1b900fb231a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: SelectMultiCharacter
+  fadeType: 0
 --- !u!1 &911985958
 GameObject:
   m_ObjectHideFlags: 0
@@ -10581,16 +10621,16 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 261061334}
+  - {fileID: 883852365}
   - {fileID: 1569994734}
   - {fileID: 911985959}
   - {fileID: 1949205319}
-  - {fileID: 883852365}
   - {fileID: 314522887}
   m_Father: {fileID: 1452106300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 203.8, y: 53.4}
+  m_AnchoredPosition: {x: 203.8, y: 125}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1470317694
