@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
             //アビリティの設定
             
             //カーソルをロック
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else if(ThisSceneState.instance.sceneType == SceneType.SelectAbility)
         {
